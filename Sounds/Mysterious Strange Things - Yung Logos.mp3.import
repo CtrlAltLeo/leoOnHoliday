@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/Mysterious Strange Things - Yung Logos.mp3-938f1cf5d1b2c9d3c897819dcb7542f9.mp3str"
+
+[deps]
+
+source_file="res://Sounds/Mysterious Strange Things - Yung Logos.mp3"
+dest_files=[ "res://.import/Mysterious Strange Things - Yung Logos.mp3-938f1cf5d1b2c9d3c897819dcb7542f9.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

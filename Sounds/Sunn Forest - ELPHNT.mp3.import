@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/Sunn Forest - ELPHNT.mp3-50c92ce935e55ca12b289f38d8c8c0c7.mp3str"
+
+[deps]
+
+source_file="res://Sounds/Sunn Forest - ELPHNT.mp3"
+dest_files=[ "res://.import/Sunn Forest - ELPHNT.mp3-50c92ce935e55ca12b289f38d8c8c0c7.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

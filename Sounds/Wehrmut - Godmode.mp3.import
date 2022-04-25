@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/Wehrmut - Godmode.mp3-1712cbe242510157dc1bc1df0343ec3a.mp3str"
+
+[deps]
+
+source_file="res://Sounds/Wehrmut - Godmode.mp3"
+dest_files=[ "res://.import/Wehrmut - Godmode.mp3-1712cbe242510157dc1bc1df0343ec3a.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

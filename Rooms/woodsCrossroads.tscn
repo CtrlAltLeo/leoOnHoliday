@@ -1,0 +1,109 @@
+[gd_scene load_steps=11 format=2]
+
+[ext_resource path="res://Scenes/mainScene.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Images/Rooms/woods1.png" type="Texture" id=2]
+[ext_resource path="res://Scenes/item.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Images/Items/mileMarker.png" type="Texture" id=4]
+[ext_resource path="res://Images/Items/woodenSign.png" type="Texture" id=5]
+
+[sub_resource type="NavigationPolygon" id=1]
+vertices = PoolVector2Array( 1139.6, 551.283, 101.325, 543.867, 134.168, 353.164, 304.742, 336.212, 376.785, 295.953, 578.083, 315.023, 746.538, 338.331, 887.447, 304.428, 1142.78, 318.201 )
+polygons = [ PoolIntArray( 0, 1, 2, 3 ), PoolIntArray( 0, 3, 4, 5, 6 ), PoolIntArray( 0, 6, 7, 8 ) ]
+outlines = [ PoolVector2Array( 134.168, 353.164, 304.742, 336.212, 376.785, 295.953, 578.083, 315.023, 746.538, 338.331, 887.447, 304.428, 1142.78, 318.201, 1139.6, 551.283, 101.325, 543.867 ) ]
+
+[sub_resource type="RectangleShape2D" id=2]
+resource_local_to_scene = true
+extents = Vector2( 58.5306, 127.366 )
+
+[sub_resource type="RectangleShape2D" id=5]
+resource_local_to_scene = true
+extents = Vector2( 34.5178, 78.0685 )
+
+[sub_resource type="RectangleShape2D" id=3]
+resource_local_to_scene = true
+extents = Vector2( 32.651, 32.6374 )
+
+[sub_resource type="Animation" id=4]
+resource_name = "flicker"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("../AlphusWizard/Light2D:energy")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1, 2 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ 0.0, 3.0, 0.0 ]
+}
+
+[node name="woodsCrossroads" instance=ExtResource( 1 )]
+
+[node name="background" parent="." index="0"]
+position = Vector2( 511.24, 297.797 )
+texture = ExtResource( 2 )
+
+[node name="CollisionPolygon2D" parent="walkableArea" index="0"]
+polygon = PoolVector2Array( 16.1521, 416.139, 205.796, 392.831, 263.007, 354.69, 631.7, 396.009, 794.857, 361.047, 1023.7, 372.701, 1027.94, 596.247, -2.91821, 595.188 )
+
+[node name="NavigationPolygonInstance" parent="Navigation2D" index="0"]
+navpoly = SubResource( 1 )
+
+[node name="markerToRoad2" parent="." index="4" instance=ExtResource( 3 )]
+position = Vector2( 405.774, 471.461 )
+image = ExtResource( 4 )
+itemType = "door"
+doorExit = "res://Rooms/wildRoads2.tscn"
+doorUseText = "You return to the wild path."
+
+[node name="CollisionShape2D" parent="markerToRoad2/Area2D" index="0"]
+shape = SubResource( 2 )
+
+[node name="Sprite" parent="markerToRoad2" index="2"]
+texture = ExtResource( 4 )
+
+[node name="player" parent="." index="5"]
+position = Vector2( 524.813, 521.084 )
+
+[node name="pillarToGrove" parent="." index="6" instance=ExtResource( 3 )]
+position = Vector2( 159.835, 356.106 )
+image = ExtResource( 4 )
+itemType = "door"
+doorExit = "res://Rooms/entranceToSacredGrove.tscn"
+doorUseText = "You walk into the sacred part of the forest"
+
+[node name="CollisionShape2D" parent="pillarToGrove/Area2D" index="0"]
+position = Vector2( -48.4157, 11.9055 )
+shape = SubResource( 5 )
+
+[node name="Sprite" parent="pillarToGrove" index="2"]
+position = Vector2( -45.6378, 15.2827 )
+scale = Vector2( 0.531841, 0.531841 )
+texture = ExtResource( 4 )
+
+[node name="Light2D" parent="pillarToGrove" index="4"]
+position = Vector2( 8.73071, -122.23 )
+
+[node name="signToWitchHut" parent="." index="7" instance=ExtResource( 3 )]
+position = Vector2( 921.029, 302.514 )
+image = ExtResource( 5 )
+itemType = "door"
+reactionText = {
+}
+doorExit = "res://Rooms/roadToWitchHut.tscn"
+doorUseText = "You go into the dark part of the woods.."
+
+[node name="CollisionShape2D" parent="signToWitchHut/Area2D" index="0"]
+shape = SubResource( 3 )
+
+[node name="Sprite" parent="signToWitchHut" index="2"]
+texture = ExtResource( 5 )
+
+[node name="AnimationPlayer" parent="signToWitchHut" index="5"]
+anims/flicker = SubResource( 4 )
+
+[editable path="markerToRoad2"]
+[editable path="pillarToGrove"]
+[editable path="signToWitchHut"]

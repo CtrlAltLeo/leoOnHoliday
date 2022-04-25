@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/By the Fireplace - TrackTribe.mp3-a5e6966540af577cdddc09d24efea573.mp3str"
+
+[deps]
+
+source_file="res://Sounds/By the Fireplace - TrackTribe.mp3"
+dest_files=[ "res://.import/By the Fireplace - TrackTribe.mp3-a5e6966540af577cdddc09d24efea573.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

@@ -1,0 +1,165 @@
+[gd_scene load_steps=17 format=2]
+
+[ext_resource path="res://Images/Rooms/aodanRoad.png" type="Texture" id=1]
+[ext_resource path="res://Scenes/mainScene.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Images/Items/woodenSign.png" type="Texture" id=3]
+[ext_resource path="res://Scenes/item.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Images/People/aodanGuy.png" type="Texture" id=5]
+[ext_resource path="res://Images/Portraits/aodanFace.png" type="Texture" id=6]
+[ext_resource path="res://Images/Items/stick.png" type="Texture" id=7]
+[ext_resource path="res://Images/Items/mushRoom.png" type="Texture" id=8]
+[ext_resource path="res://Images/Items/dungeonKey.png" type="Texture" id=9]
+
+[sub_resource type="NavigationPolygon" id=1]
+vertices = PoolVector2Array( 984.875, 454.098, 661.411, 400.583, 657.843, 343.501, 1057.42, 400.583, 1110.93, 430.314, 1112.12, 461.233, 128.646, 546.856, 116.754, 442.206, 519.895, 416.043, 927.793, 548.045, 972.983, 519.504 )
+polygons = [ PoolIntArray( 0, 1, 2, 3, 4, 5 ), PoolIntArray( 6, 7, 8, 9 ), PoolIntArray( 9, 8, 1, 0, 10 ) ]
+outlines = [ PoolVector2Array( 116.754, 442.206, 519.895, 416.043, 661.411, 400.583, 657.843, 343.501, 1057.42, 400.583, 1110.93, 430.314, 1112.12, 461.233, 984.875, 454.098, 972.983, 519.504, 927.793, 548.045, 128.646, 546.856 ) ]
+
+[sub_resource type="RectangleShape2D" id=2]
+resource_local_to_scene = true
+extents = Vector2( 48.7442, 78.856 )
+
+[sub_resource type="RectangleShape2D" id=3]
+resource_local_to_scene = true
+extents = Vector2( 32.651, 32.6374 )
+
+[sub_resource type="RectangleShape2D" id=4]
+resource_local_to_scene = true
+extents = Vector2( 32.651, 32.6374 )
+
+[sub_resource type="RectangleShape2D" id=5]
+resource_local_to_scene = true
+extents = Vector2( 32.651, 32.6374 )
+
+[sub_resource type="RectangleShape2D" id=6]
+resource_local_to_scene = true
+extents = Vector2( 32.651, 32.6374 )
+
+[sub_resource type="RectangleShape2D" id=7]
+resource_local_to_scene = true
+extents = Vector2( 32.651, 32.6374 )
+
+[node name="aodanRoad" instance=ExtResource( 2 )]
+
+[node name="background" parent="." index="0"]
+texture = ExtResource( 1 )
+
+[node name="CollisionPolygon2D" parent="walkableArea" index="0"]
+polygon = PoolVector2Array( 6.15384, 506.219, 429.512, 482.435, 559.135, 447.948, 567.46, 409.893, 640.001, 425.353, 733.949, 440.812, 907.573, 463.407, 1006.28, 493.137, 989.628, 514.543, 871.897, 502.651, 863.572, 540.706, 850.491, 581.139, 779.138, 603.734, 18.0459, 597.788, 1.397, 495.516 )
+
+[node name="NavigationPolygonInstance" parent="Navigation2D" index="0"]
+navpoly = SubResource( 1 )
+
+[node name="signToFork" parent="." index="4" instance=ExtResource( 4 )]
+position = Vector2( 22, 513 )
+image = ExtResource( 3 )
+itemType = "door"
+doorExit = "res://Rooms/forkRoad.tscn"
+doorUseText = "You follow the, well, you know."
+
+[node name="CollisionShape2D" parent="signToFork/Area2D" index="0"]
+position = Vector2( 34.487, -16.0543 )
+shape = SubResource( 2 )
+
+[node name="Sprite" parent="signToFork" index="2"]
+position = Vector2( 30.5, -22.4999 )
+scale = Vector2( 0.597656, 0.722656 )
+texture = ExtResource( 3 )
+flip_h = true
+
+[node name="Light2D" parent="signToFork" index="4"]
+position = Vector2( 99.8934, 61.8388 )
+
+[node name="aodan" parent="." index="5" instance=ExtResource( 4 )]
+position = Vector2( 845.423, 410.281 )
+image = ExtResource( 5 )
+itemType = "NPC"
+viewText = [ "Hey Aodan, you're looking kind of rough..", "Yeah? It's your fault you know, this is the only PNG you have of me.", "What?", "Just ask for a better photo for the game! ", "What the heck are you talking about?", "YOU KNOW EXACTLY WHAT I'M TALKING ABOUT!!", "Uhh...", "No B-", "Dude you can't say that in a Brimless game.", "YOU JUST ACKNOWLEDGED THAT WE'RE IN A", "Anyway, do you have any quests you need me to do or advice?", "Well, this guy gave me a Dungeon Key and asked me not to give it to you unless you give me a Steel Helmet.", "You need a Steel Helmet?", "Or a hubcap.", "But I need a hubcap!", "Just get me a Steel Helmet." ]
+reactionText = {
+"beerStein": [ "Aodan doesn't want that.", "Come back with a better gift!" ],
+"mushroom": [ "It's your mushroom!", "You figure out how to get rid of it!" ],
+"steelHelmet": [ "Aodan is grateful for the steel helmet.", "It will offer him more protection than this cardboard box.", "In return, he gives you a dungeon key.", "Take a wild guess at what it does.." ],
+"stick": [ "What is with you and hitting every NPC with every weapon?", "That's not healthy.." ],
+"woodenClub": [ "Bonk!", "But he didn't go to jail.." ]
+}
+powerSignals = [ "steelHelmet" ]
+npcFace = ExtResource( 6 )
+faceArray = [ 1, 2, 1, 2, 1, 2, 1, 2, 1, 2, 1, 2, 1, 2, 1, 2 ]
+
+[node name="CollisionShape2D" parent="aodan/Area2D" index="0"]
+shape = SubResource( 3 )
+
+[node name="Sprite" parent="aodan" index="2"]
+texture = ExtResource( 5 )
+
+[node name="walkPos" parent="aodan" index="3"]
+position = Vector2( -106.529, 98.3526 )
+
+[node name="stick" parent="." index="6" instance=ExtResource( 4 )]
+position = Vector2( 493.682, 465.109 )
+image = ExtResource( 7 )
+itemType = "pickup"
+viewText = [ "It's a wooden stick.", "You can bonk things with it.", "Small things.." ]
+
+[node name="CollisionShape2D" parent="stick/Area2D" index="0"]
+shape = SubResource( 4 )
+
+[node name="Sprite" parent="stick" index="2"]
+rotation = 0.686182
+texture = ExtResource( 7 )
+
+[node name="walkPos" parent="stick" index="3"]
+position = Vector2( -86.2674, 35.4919 )
+
+[node name="mushroom" parent="." index="7" instance=ExtResource( 4 )]
+position = Vector2( 788.145, 565.115 )
+image = ExtResource( 8 )
+itemType = "pickup"
+viewText = [ "You pick up the potentially toxic mushroom and put it in your pocket", "your good pocket. ", "You now have a toxic mushroom in your pocket." ]
+
+[node name="CollisionShape2D" parent="mushroom/Area2D" index="0"]
+shape = SubResource( 5 )
+
+[node name="Sprite" parent="mushroom" index="2"]
+texture = ExtResource( 8 )
+
+[node name="walkPos" parent="mushroom" index="3"]
+position = Vector2( -85.0995, 1.52116 )
+
+[node name="signToWizardRoad" parent="." index="8" instance=ExtResource( 4 )]
+position = Vector2( 638.072, 337.051 )
+image = ExtResource( 3 )
+itemType = "door"
+doorExit = "res://Rooms/wizardRoad.tscn"
+
+[node name="CollisionShape2D" parent="signToWizardRoad/Area2D" index="0"]
+position = Vector2( 28.4679, 53.9391 )
+shape = SubResource( 6 )
+
+[node name="Sprite" parent="signToWizardRoad" index="2"]
+position = Vector2( 34.8357, 53.5645 )
+scale = Vector2( 0.341564, 0.341564 )
+texture = ExtResource( 3 )
+
+[node name="Light2D" parent="signToWizardRoad" index="4"]
+position = Vector2( 94.3934, -25.4712 )
+
+[node name="dungeonKey" parent="." index="9" instance=ExtResource( 4 )]
+position = Vector2( -331.313, 163.134 )
+image = ExtResource( 9 )
+itemType = "pickup"
+
+[node name="CollisionShape2D" parent="dungeonKey/Area2D" index="0"]
+shape = SubResource( 7 )
+
+[node name="player" parent="." index="10"]
+position = Vector2( 221.515, 520.312 )
+
+[connection signal="powerSignal" from="aodan" to="dungeonKey" method="pickup"]
+
+[editable path="signToFork"]
+[editable path="aodan"]
+[editable path="stick"]
+[editable path="mushroom"]
+[editable path="signToWizardRoad"]
+[editable path="dungeonKey"]

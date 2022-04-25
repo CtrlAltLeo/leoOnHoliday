@@ -1,0 +1,87 @@
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://Scenes/mainScene.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Images/Rooms/dungeon.png" type="Texture" id=2]
+[ext_resource path="res://Scenes/item.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Images/Items/skull.png" type="Texture" id=4]
+[ext_resource path="res://Images/Items/toaster.png" type="Texture" id=5]
+
+[sub_resource type="NavigationPolygon" id=1]
+vertices = PoolVector2Array( 664.741, 374.832, 870.152, 396.159, 837.6, 456.772, 398.718, 368.097, 1133.93, 551.059, 106.877, 546.569, 122.592, 369.22, 941.989, 497.181, 1058.73, 478.099, 1133.93, 483.711 )
+polygons = [ PoolIntArray( 0, 1, 2, 3 ), PoolIntArray( 4, 5, 6, 3, 7 ), PoolIntArray( 8, 9, 4, 7 ), PoolIntArray( 2, 7, 3 ) ]
+outlines = [ PoolVector2Array( 122.592, 369.22, 398.718, 368.097, 664.741, 374.832, 870.152, 396.159, 837.6, 456.772, 941.989, 497.181, 1058.73, 478.099, 1133.93, 483.711, 1133.93, 551.059, 106.877, 546.569 ) ]
+
+[sub_resource type="RectangleShape2D" id=2]
+resource_local_to_scene = true
+extents = Vector2( 29.7025, 31.2074 )
+
+[sub_resource type="RectangleShape2D" id=3]
+resource_local_to_scene = true
+extents = Vector2( 29.7025, 31.2074 )
+
+[node name="dungeon" instance=ExtResource( 1 )]
+
+[node name="background" parent="." index="0"]
+texture = ExtResource( 2 )
+
+[node name="CollisionPolygon2D" parent="walkableArea" index="0"]
+polygon = PoolVector2Array( 15.9547, 421.56, 754.4, 443.808, 727.914, 507.376, 846.574, 548.695, 1027.74, 531.744, 1031.98, 610.144, -13.7103, 603.787 )
+
+[node name="NavigationPolygonInstance" parent="Navigation2D" index="0"]
+navpoly = SubResource( 1 )
+
+[node name="skull" parent="." index="4" instance=ExtResource( 3 )]
+position = Vector2( 190, 442 )
+id_name = "skull"
+image = ExtResource( 4 )
+itemType = "useable"
+viewText = [ "Broo It's a skull! OAHAOHUSDPOAS" ]
+reactionText = {
+"toaster": [ "What would a skull want with a toaster?" ]
+}
+
+[node name="CollisionShape2D" parent="skull/Area2D" index="0"]
+shape = SubResource( 2 )
+
+[node name="Sprite" parent="skull" index="1"]
+position = Vector2( -2, 1 )
+
+[node name="walkPos" parent="skull" index="2"]
+position = Vector2( 43.49, 28.2478 )
+
+[node name="toast" parent="." index="5" instance=ExtResource( 3 )]
+position = Vector2( 741, 506 )
+id_name = "toaster"
+image = ExtResource( 5 )
+itemType = "pickup"
+viewText = [ "You get the toaster, fool." ]
+
+[node name="door" parent="." index="6" instance=ExtResource( 3 )]
+position = Vector2( 70, 283 )
+id_name = "doorToLibrary"
+itemType = "door"
+doorLocked = true
+doorExit = "res://Rooms/library.tscn"
+
+[node name="skull2" parent="." index="7" instance=ExtResource( 3 )]
+position = Vector2( 838, 201 )
+id_name = "skull2"
+image = ExtResource( 4 )
+itemType = "useable"
+viewText = [ "Poor sucker.." ]
+reactionText = {
+"toaster": [ "Somehow the skull and toaster opened the door!" ]
+}
+powerSignals = [ "toaster" ]
+removesItem = true
+
+[node name="CollisionShape2D" parent="skull2/Area2D" index="0"]
+shape = SubResource( 3 )
+
+[node name="walkPos" parent="skull2" index="2"]
+position = Vector2( -167.51, 270.248 )
+
+[connection signal="powerSignal" from="skull2" to="door" method="unlockDoor"]
+
+[editable path="skull"]
+[editable path="skull2"]

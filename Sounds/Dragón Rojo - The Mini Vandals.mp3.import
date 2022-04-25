@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/Dragón Rojo - The Mini Vandals.mp3-029ab46f45ba212b02e9ff22049f2beb.mp3str"
+
+[deps]
+
+source_file="res://Sounds/Dragón Rojo - The Mini Vandals.mp3"
+dest_files=[ "res://.import/Dragón Rojo - The Mini Vandals.mp3-029ab46f45ba212b02e9ff22049f2beb.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

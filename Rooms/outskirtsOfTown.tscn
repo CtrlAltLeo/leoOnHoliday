@@ -1,0 +1,143 @@
+[gd_scene load_steps=16 format=2]
+
+[ext_resource path="res://Scenes/mainScene.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Images/Rooms/outskirtsOfCity.png" type="Texture" id=2]
+[ext_resource path="res://Images/People/villigerMan1.png" type="Texture" id=3]
+[ext_resource path="res://Images/Portraits/man1face.png" type="Texture" id=4]
+[ext_resource path="res://Scenes/item.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Images/Portraits/woman1face.png" type="Texture" id=6]
+[ext_resource path="res://Images/People/villigerWoman1.png" type="Texture" id=7]
+[ext_resource path="res://Images/Items/woodenSign.png" type="Texture" id=8]
+[ext_resource path="res://Sounds/In Memory of Jean Talon - Mini Vandals.mp3" type="AudioStream" id=9]
+[ext_resource path="res://Images/Items/basicGift.png" type="Texture" id=10]
+
+[sub_resource type="NavigationPolygon" id=1]
+vertices = PoolVector2Array( 627.978, 380.478, 527.972, 343.968, 479.556, 317.776, 553.37, 314.601, 602.579, 321.745, 1128.8, 554.299, 370.025, 409.845, 340.658, 389.209, 436.696, 377.304, 812.116, 456.674, 246.208, 534.456, 317.641, 470.167, 1008.16, 456.674, 1128.8, 464.611, 682.743, 409.052, 759.732, 420.164 )
+polygons = [ PoolIntArray( 0, 1, 2, 3, 4 ), PoolIntArray( 5, 6, 7, 8, 9 ), PoolIntArray( 5, 10, 11 ), PoolIntArray( 5, 11, 6 ), PoolIntArray( 12, 13, 5, 9 ), PoolIntArray( 8, 1, 0, 14 ), PoolIntArray( 15, 9, 8, 14 ) ]
+outlines = [ PoolVector2Array( 246.208, 534.456, 317.641, 470.167, 370.025, 409.845, 340.658, 389.209, 436.696, 377.304, 527.972, 343.968, 479.556, 317.776, 553.37, 314.601, 602.579, 321.745, 627.978, 380.478, 682.743, 409.052, 759.732, 420.164, 812.116, 456.674, 1008.16, 456.674, 1128.8, 464.611, 1128.8, 554.299 ) ]
+
+[sub_resource type="RectangleShape2D" id=2]
+resource_local_to_scene = true
+extents = Vector2( 51.2354, 122.887 )
+
+[sub_resource type="RectangleShape2D" id=3]
+resource_local_to_scene = true
+extents = Vector2( 32.651, 68.592 )
+
+[sub_resource type="RectangleShape2D" id=4]
+resource_local_to_scene = true
+extents = Vector2( 72.3298, 103.228 )
+
+[sub_resource type="RectangleShape2D" id=5]
+resource_local_to_scene = true
+extents = Vector2( 32.651, 32.6374 )
+
+[node name="outskirtsOfTown" instance=ExtResource( 1 )]
+sceneMusic = ExtResource( 9 )
+
+[node name="background" parent="." index="0"]
+texture = ExtResource( 2 )
+
+[node name="CollisionPolygon2D" parent="walkableArea" index="0"]
+polygon = PoolVector2Array( 141.958, 582.606, 253.869, 468.313, 226.09, 447.677, 415.784, 403.23, 368.956, 371.482, 442.77, 365.132, 505.472, 379.419, 508.647, 421.485, 571.35, 462.757, 656.275, 472.282, 695.167, 508.792, 1021.38, 518.279, 1022.97, 615.904, 138.783, 596.855 )
+
+[node name="NavigationPolygonInstance" parent="Navigation2D" index="0"]
+navpoly = SubResource( 1 )
+
+[node name="player" parent="." index="3"]
+position = Vector2( 909.223, 537.866 )
+
+[node name="villigerMan1" parent="." index="4" instance=ExtResource( 5 )]
+position = Vector2( 286.398, 460.794 )
+image = ExtResource( 3 )
+itemType = "NPC"
+viewText = [ "Hello stranger! You don't look like you're from around here!", "Wow, you're the first person to say that!", "I wouldn't be surprised. City folk are more nosey.", "What can you tell me about the city? ", "Well, our fair city is called Goldrun. King Graham, our wise ruler lives in the Crystal Palace, and he..", "Well, it's truely terrible. He was cursed by an evil druid, and has fallen into a deep slumber. ", "As he sleeps, plants grow around up, trapping him in a living prison from which he cannot rise.", "This certainly is trouble! Where can I learn more about this curse?", "Well, the nobles and the Court Wizard would be the ones to ask.", "Thank you!" ]
+npcFace = ExtResource( 4 )
+faceArray = [ 2, 1, 2, 1, 2, 2, 2, 1, 2, 1 ]
+
+[node name="CollisionShape2D" parent="villigerMan1/Area2D" index="0"]
+position = Vector2( -35.7165, -43.6535 )
+shape = SubResource( 2 )
+
+[node name="Sprite" parent="villigerMan1" index="2"]
+position = Vector2( -30.1606, -42.8598 )
+texture = ExtResource( 3 )
+
+[node name="walkPos" parent="villigerMan1" index="3"]
+position = Vector2( 50.6232, 71.3668 )
+
+[node name="villigerWoman" parent="." index="5" instance=ExtResource( 5 )]
+position = Vector2( 560.496, 305.592 )
+image = ExtResource( 7 )
+itemType = "NPC"
+viewText = [ "Oh no, I've really lost it, haven't I..", "Are you looking for something?", "Yes, I am.", "My grandfather was a silversmith, and he gave me his most beautiful flaggon before he passed. ", "If you find it, will you return it to me?", "It means a lot to me, but I could also sell it for money to buy bread." ]
+reactionText = {
+"beerStein": [ "The woman is overjoyed to have the precious tankard returned.", "She doesn't have much to offer you, but she gives you a small dishtowel in a fancy box." ],
+"chocolateMilk": [ "Don't do that." ]
+}
+powerSignals = [ "beerStein" ]
+npcFace = ExtResource( 6 )
+faceArray = [ 2, 1, 2, 2, 2, 2 ]
+
+[node name="CollisionShape2D" parent="villigerWoman/Area2D" index="0"]
+position = Vector2( -17, 49 )
+shape = SubResource( 3 )
+
+[node name="Sprite" parent="villigerWoman" index="2"]
+position = Vector2( -13.75, 48.5 )
+scale = Vector2( 0.589844, 0.589844 )
+texture = ExtResource( 7 )
+
+[node name="walkPos" parent="villigerWoman" index="3"]
+position = Vector2( -70.0862, 112.105 )
+
+[node name="Light2D" parent="villigerWoman" index="4"]
+position = Vector2( 64, 71.5 )
+
+[node name="signToWizard2" parent="." index="6" instance=ExtResource( 5 )]
+position = Vector2( 771.131, 474.801 )
+image = ExtResource( 8 )
+itemType = "door"
+doorExit = "res://Rooms/wizardRoad.tscn"
+doorUseText = "You return to the road with the Wizard"
+
+[node name="CollisionShape2D" parent="signToWizard2/Area2D" index="0"]
+position = Vector2( -4.24261, 1.41418 )
+shape = SubResource( 4 )
+
+[node name="Sprite" parent="signToWizard2" index="2"]
+texture = ExtResource( 8 )
+
+[node name="signToCity" parent="." index="7" instance=ExtResource( 5 )]
+position = Vector2( 428.857, 269.087 )
+image = ExtResource( 8 )
+itemType = "door"
+doorExit = "res://Rooms/city.tscn"
+doorUseText = "You follow the sign into the city"
+
+[node name="CollisionShape2D" parent="signToCity/Area2D" index="0"]
+position = Vector2( -37.6109, 71.5138 )
+shape = SubResource( 5 )
+
+[node name="Sprite" parent="signToCity" index="2"]
+position = Vector2( -36.5515, 65.1569 )
+scale = Vector2( 0.370944, 0.370944 )
+texture = ExtResource( 8 )
+
+[node name="walkPos" parent="signToCity" index="3"]
+position = Vector2( 7.6501, 111.15 )
+
+[node name="Light2D" parent="signToCity" index="4"]
+position = Vector2( -104.887, 28.6055 )
+
+[node name="basicGift" parent="." index="8" instance=ExtResource( 5 )]
+position = Vector2( -226.244, 119.865 )
+image = ExtResource( 10 )
+itemType = "pickup"
+
+[connection signal="powerSignal" from="villigerWoman" to="basicGift" method="pickup"]
+
+[editable path="villigerMan1"]
+[editable path="villigerWoman"]
+[editable path="signToWizard2"]
+[editable path="signToCity"]

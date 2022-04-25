@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/Nightmares Inn - RKVC.mp3-2779769bd7ec90d736eaede4e62e746e.mp3str"
+
+[deps]
+
+source_file="res://Sounds/Nightmares Inn - RKVC.mp3"
+dest_files=[ "res://.import/Nightmares Inn - RKVC.mp3-2779769bd7ec90d736eaede4e62e746e.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

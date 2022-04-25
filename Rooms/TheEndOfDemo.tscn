@@ -1,0 +1,23 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://Images/Portraits/leoPortrait.png" type="Texture" id=1]
+
+[node name="TheEndOfDemo" type="Node2D"]
+
+[node name="text" type="RichTextLabel" parent="."]
+margin_left = 388.056
+margin_top = 194.028
+margin_right = 660.056
+margin_bottom = 429.028
+text = "That's it.
+That's all for now. 
+Make sure to Like and Subscribe for mroe great content and speeling errors. 
+More to be released soon. 
+-L"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="leoPortrait" type="Sprite" parent="."]
+position = Vector2( 323.628, 232.753 )
+texture = ExtResource( 1 )

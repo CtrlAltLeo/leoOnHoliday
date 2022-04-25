@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/In Memory of Jean Talon - Mini Vandals.mp3-f57af42a7e71ac782f4638a7ffb16829.mp3str"
+
+[deps]
+
+source_file="res://Sounds/In Memory of Jean Talon - Mini Vandals.mp3"
+dest_files=[ "res://.import/In Memory of Jean Talon - Mini Vandals.mp3-f57af42a7e71ac782f4638a7ffb16829.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

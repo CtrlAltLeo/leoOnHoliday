@@ -1,0 +1,128 @@
+[gd_scene load_steps=14 format=2]
+
+[ext_resource path="res://Images/Rooms/road.png" type="Texture" id=1]
+[ext_resource path="res://Images/People/robber.png" type="Texture" id=2]
+[ext_resource path="res://Scenes/mainScene.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Scenes/item.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Images/Portraits/robberFace.png" type="Texture" id=5]
+[ext_resource path="res://Images/Items/woodenSign.png" type="Texture" id=6]
+[ext_resource path="res://Images/Items/brink.png" type="Texture" id=7]
+[ext_resource path="res://Sounds/Nightmares Inn - RKVC.mp3" type="AudioStream" id=8]
+
+[sub_resource type="NavigationPolygon" id=1]
+vertices = PoolVector2Array( 324.277, 264.027, 1134.99, 457.352, 1143.01, 561.588, 680.637, 543.77, 201.333, 277.391, 285.078, 243.537, 215.588, 252.446 )
+polygons = [ PoolIntArray( 0, 1, 2, 3, 4 ), PoolIntArray( 5, 0, 4, 6 ) ]
+outlines = [ PoolVector2Array( 215.588, 252.446, 285.078, 243.537, 324.277, 264.027, 1134.99, 457.352, 1143.01, 561.588, 680.637, 543.77, 201.333, 277.391 ) ]
+
+[sub_resource type="RectangleShape2D" id=2]
+resource_local_to_scene = true
+extents = Vector2( 68.1214, 135.83 )
+
+[sub_resource type="RectangleShape2D" id=3]
+resource_local_to_scene = true
+extents = Vector2( 32.651, 32.6374 )
+
+[sub_resource type="RectangleShape2D" id=4]
+resource_local_to_scene = true
+extents = Vector2( 75.0636, 105.521 )
+
+[sub_resource type="RectangleShape2D" id=5]
+resource_local_to_scene = true
+extents = Vector2( 32.651, 32.6374 )
+
+[node name="road" instance=ExtResource( 3 )]
+sceneMusic = ExtResource( 8 )
+
+[node name="background" parent="." index="0"]
+texture = ExtResource( 1 )
+
+[node name="CollisionPolygon2D" parent="walkableArea" index="0"]
+polygon = PoolVector2Array( 104.097, 308.727, 93.4059, 330.999, 206.55, 399.599, 574.491, 601.833, 1031.52, 614.305, 1022.61, 507.397, 324.149, 360.399, 215.459, 327.436, 177.15, 301.6 )
+
+[node name="NavigationPolygonInstance" parent="Navigation2D" index="0"]
+navpoly = SubResource( 1 )
+
+[node name="bandit" parent="." index="4" instance=ExtResource( 4 )]
+position = Vector2( 401.795, 336.76 )
+image = ExtResource( 2 )
+itemType = "NPC"
+viewText = [ "Stop right there! You want to pass on my road, you need to pay the toll!", "Are you an officially sanctioned government offical?", "No.", "Do you own this road that I'm walking on?", "Uh..no.", "Do you or your forefathers have a claim to this land?", "No.", "Then why should I pay you?", "Because I have a gunsword in this suitcase and I'll kill you.", "Reasonable. " ]
+reactionText = {
+"banjo": [ "This is no time for banjo music!" ],
+"brink": [ "The bandit has no taste.", "\"BrinK? Get that away from me!\"" ],
+"chocolateMilk": [ "The bandit cries tears of joy, and lets you pass." ],
+"coin": [ "You give the bandit a coin, and he lets you pass.", "You hope he trips on his untied shoelace." ],
+"rat": [ "It's not very effective! " ],
+"woodenClub": [ "You bonk the robber on the head. Get out of paying free card?" ]
+}
+powerSignals = [ "woodenClub", "coin", "chocolateMilk" ]
+npcFace = ExtResource( 5 )
+faceArray = [ 2, 1, 2, 1, 2, 1, 2, 1, 2, 1 ]
+
+[node name="CollisionShape2D" parent="bandit/Area2D" index="0"]
+position = Vector2( 2.66968, -2.00226 )
+shape = SubResource( 2 )
+
+[node name="Sprite" parent="bandit" index="2"]
+texture = ExtResource( 2 )
+
+[node name="walkPos" parent="bandit" index="3"]
+position = Vector2( 115.198, 130.082 )
+
+[node name="signToFork" parent="." index="5" instance=ExtResource( 4 )]
+position = Vector2( 175.649, 227.26 )
+image = ExtResource( 6 )
+itemType = "door"
+doorLocked = true
+doorExit = "res://Rooms/forkRoad.tscn"
+doorLockedText = "I know what you're going through, I wouldn't want to pay this guy either! But thems the rules, sorry."
+doorUseText = "You continue on your journey, past the robber."
+
+[node name="CollisionShape2D" parent="signToFork/Area2D" index="0"]
+position = Vector2( 4.49492, 65.1764 )
+shape = SubResource( 3 )
+
+[node name="Sprite" parent="signToFork" index="2"]
+position = Vector2( 9.36438, 63.3035 )
+scale = Vector2( 0.265478, 0.265478 )
+texture = ExtResource( 6 )
+
+[node name="walkPos" parent="signToFork" index="3"]
+position = Vector2( 50.4953, 125.125 )
+
+[node name="signToRoadStop" parent="." index="6" instance=ExtResource( 4 )]
+position = Vector2( 913.966, 438.99 )
+image = ExtResource( 6 )
+itemType = "door"
+doorExit = "res://Rooms/roadStopExterior.tscn"
+doorUseText = "You leave the highway man to mess with other people, and return to the Road Stop."
+
+[node name="CollisionShape2D" parent="signToRoadStop/Area2D" index="0"]
+position = Vector2( -5.99323, 14.9831 )
+shape = SubResource( 4 )
+
+[node name="Sprite" parent="signToRoadStop" index="2"]
+texture = ExtResource( 6 )
+
+[node name="brink" parent="." index="7" instance=ExtResource( 4 )]
+position = Vector2( 712.056, 444.622 )
+rotation = 0.717461
+image = ExtResource( 7 )
+itemType = "pickup"
+viewText = [ "Hey, it's a copy of Brink for the XBox 360" ]
+
+[node name="CollisionShape2D" parent="brink/Area2D" index="0"]
+shape = SubResource( 5 )
+
+[node name="Sprite" parent="brink" index="2"]
+texture = ExtResource( 7 )
+
+[node name="player" parent="." index="8"]
+position = Vector2( 666.017, 508.189 )
+
+[connection signal="powerSignal" from="bandit" to="signToFork" method="unlockDoor"]
+
+[editable path="bandit"]
+[editable path="signToFork"]
+[editable path="signToRoadStop"]
+[editable path="brink"]

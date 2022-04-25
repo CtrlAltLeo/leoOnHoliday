@@ -1,0 +1,124 @@
+[gd_scene load_steps=13 format=2]
+
+[ext_resource path="res://Images/Rooms/wildsRoad1.png" type="Texture" id=1]
+[ext_resource path="res://Scenes/mainScene.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Scenes/item.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Images/Items/mileMarker.png" type="Texture" id=4]
+[ext_resource path="res://Images/Portraits/brigandFace1.png" type="Texture" id=5]
+[ext_resource path="res://Images/People/brigand1.png" type="Texture" id=6]
+[ext_resource path="res://Images/Items/bone.png" type="Texture" id=7]
+[ext_resource path="res://Sounds/Sunn Forest - ELPHNT.mp3" type="AudioStream" id=8]
+
+[sub_resource type="NavigationPolygon" id=1]
+vertices = PoolVector2Array( 762.469, 318, 880.453, 292.515, 958.795, 332.158, 805.887, 374.632, 734.152, 347.26, 937.085, 518.101, 942.749, 542.642, 224.46, 532.259, 317.904, 427.489, 763.413, 456.749, 789.841, 223.612, 894.611, 232.107 )
+polygons = [ PoolIntArray( 0, 1, 2, 3, 4 ), PoolIntArray( 5, 6, 7, 8, 9 ), PoolIntArray( 9, 8, 4, 3 ), PoolIntArray( 1, 0, 10, 11 ) ]
+outlines = [ PoolVector2Array( 224.46, 532.259, 317.904, 427.489, 734.152, 347.26, 762.469, 318, 789.841, 223.612, 894.611, 232.107, 880.453, 292.515, 958.795, 332.158, 805.887, 374.632, 763.413, 456.749, 937.085, 518.101, 942.749, 542.642 ) ]
+
+[sub_resource type="RectangleShape2D" id=2]
+resource_local_to_scene = true
+extents = Vector2( 57, 118.344 )
+
+[sub_resource type="Animation" id=3]
+length = 2.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("../AlphusWizard/Light2D:energy")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1, 2 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ 0.0, 3.0, 0.0 ]
+}
+
+[sub_resource type="RectangleShape2D" id=4]
+resource_local_to_scene = true
+extents = Vector2( 56.036, 158.326 )
+
+[node name="wildsRoad" instance=ExtResource( 2 )]
+sceneMusic = ExtResource( 8 )
+
+[node name="background" parent="." index="0"]
+texture = ExtResource( 1 )
+
+[node name="CollisionPolygon2D" parent="walkableArea" index="0"]
+polygon = PoolVector2Array( 110.085, 589.59, 241.283, 490.483, 447.992, 447.065, 619.777, 406.479, 656.588, 367.78, 675.466, 282.831, 784.955, 286.607, 767.965, 348.902, 845.363, 385.713, 690.568, 427.244, 647.149, 514.08, 811.383, 569.769, 832.149, 596.197 )
+
+[node name="NavigationPolygonInstance" parent="Navigation2D" index="0"]
+navpoly = SubResource( 1 )
+
+[node name="markerToField" parent="." index="4" instance=ExtResource( 3 )]
+position = Vector2( 197, 483 )
+image = ExtResource( 4 )
+itemType = "door"
+doorExit = "res://Rooms/field.tscn"
+doorUseText = "You follow the marker to the field"
+
+[node name="CollisionShape2D" parent="markerToField/Area2D" index="0"]
+shape = SubResource( 2 )
+
+[node name="Sprite" parent="markerToField" index="2"]
+texture = ExtResource( 4 )
+
+[node name="markerToRoads2" parent="." index="5" instance=ExtResource( 3 )]
+position = Vector2( 737.255, 240.655 )
+image = ExtResource( 4 )
+itemType = "door"
+reactionText = {
+}
+doorExit = "res://Rooms/wildRoads2.tscn"
+doorUseText = "The marker leads you deeper into the wilds."
+
+[node name="CollisionShape2D" parent="markerToRoads2/Area2D" index="0"]
+position = Vector2( 6.23627, -32.0724 )
+shape = SubResource( 2 )
+
+[node name="Sprite" parent="markerToRoads2" index="2"]
+position = Vector2( 4.45447, 11.5817 )
+scale = Vector2( 0.554551, 0.554551 )
+texture = ExtResource( 4 )
+
+[node name="AnimationPlayer" parent="markerToRoads2" index="5"]
+anims/flicker = SubResource( 3 )
+
+[node name="brigand" parent="." index="6" instance=ExtResource( 3 )]
+position = Vector2( 674.238, 361.092 )
+image = ExtResource( 6 )
+itemType = "NPC"
+viewText = [ "It's dangerous to be traveling in these woods alone, you know..", "Strange things dwell here, dangerous creatures and odd magic..", "Thanks for the warning, I'll make sure to keep an eye out for odd characters.", "Do you know where this road leads to?", "I have my suspicions..", "Being cautious isn't enough out here, you need to be armed. Keep your sword free and ready, and you might survive the wilds.", "But if you should meet The Witch or The Lady...", "pray they're in a good mood." ]
+reactionText = {
+"rat": [ "You were given that rat for a reason!", "Don't waste it!" ],
+"woodenClub": [ "That's no way to treat a random thug in the woods!", "wait.." ]
+}
+npcFace = ExtResource( 5 )
+faceArray = [ 2, 2, 1, 2, 1, 2, 2, 2 ]
+
+[node name="CollisionShape2D" parent="brigand/Area2D" index="0"]
+position = Vector2( -108.69, -16.9271 )
+shape = SubResource( 4 )
+
+[node name="Sprite" parent="brigand" index="2"]
+position = Vector2( -108.244, -10.6908 )
+scale = Vector2( 1.24361, 1.24361 )
+texture = ExtResource( 6 )
+
+[node name="walkPos" parent="brigand" index="3"]
+position = Vector2( -216.856, 177.967 )
+
+[node name="Light2D" parent="brigand" index="4"]
+position = Vector2( -163.034, -48.9995 )
+
+[node name="bone" parent="." index="7" instance=ExtResource( 3 )]
+position = Vector2( 716.895, 559.405 )
+image = ExtResource( 7 )
+itemType = "view"
+viewText = [ "A bone on the ground?", "This place is hardcore.." ]
+
+[node name="player" parent="." index="8"]
+position = Vector2( 366.666, 528.066 )
+
+[editable path="markerToField"]
+[editable path="markerToRoads2"]
+[editable path="brigand"]

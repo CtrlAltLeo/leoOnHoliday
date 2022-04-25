@@ -1,0 +1,137 @@
+[gd_scene load_steps=13 format=2]
+
+[ext_resource path="res://Images/Rooms/wildsRoad2.png" type="Texture" id=1]
+[ext_resource path="res://Scenes/mainScene.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Scenes/item.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Images/Items/mileMarker.png" type="Texture" id=4]
+[ext_resource path="res://Images/Items/arcadeMachine1.png" type="Texture" id=5]
+[ext_resource path="res://Images/Items/vines.png" type="Texture" id=6]
+
+[sub_resource type="NavigationPolygon" id=1]
+vertices = PoolVector2Array( 410.791, 512.443, 586.794, 322.169, 696.201, 282.926, 759.229, 274.601, 771.121, 284.115, 809.175, 551.686 )
+polygons = [ PoolIntArray( 0, 1, 2, 3, 4, 5 ) ]
+outlines = [ PoolVector2Array( 410.791, 512.443, 586.794, 322.169, 696.201, 282.926, 759.229, 274.601, 771.121, 284.115, 809.175, 551.686 ) ]
+
+[sub_resource type="RectangleShape2D" id=2]
+resource_local_to_scene = true
+extents = Vector2( 48.7206, 132.635 )
+
+[sub_resource type="RectangleShape2D" id=3]
+extents = Vector2( 19.7292, 47.7818 )
+
+[sub_resource type="Animation" id=4]
+resource_name = "flicker"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("../AlphusWizard/Light2D:energy")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1, 2 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ 0.0, 3.0, 0.0 ]
+}
+
+[sub_resource type="RectangleShape2D" id=5]
+resource_local_to_scene = true
+extents = Vector2( 52.687, 91.041 )
+
+[sub_resource type="RectangleShape2D" id=6]
+resource_local_to_scene = true
+extents = Vector2( 40.7169, 53.6617 )
+
+[node name="wildRoads2" instance=ExtResource( 2 )]
+
+[node name="background" parent="." index="0"]
+texture = ExtResource( 1 )
+
+[node name="CollisionPolygon2D" parent="walkableArea" index="0"]
+polygon = PoolVector2Array( 300.191, 580.023, 426.247, 451.589, 522.573, 367.155, 601.061, 340.993, 652.196, 326.722, 659.332, 406.399, 668.845, 483.698, 693.819, 612.132 )
+
+[node name="NavigationPolygonInstance" parent="Navigation2D" index="0"]
+navpoly = SubResource( 1 )
+
+[node name="markerToRoad1" parent="." index="4" instance=ExtResource( 3 )]
+position = Vector2( 348.438, 467.358 )
+image = ExtResource( 4 )
+itemType = "door"
+doorExit = "res://Rooms/wildsRoad1.tscn"
+doorUseText = "You backtrack through the wilds"
+
+[node name="CollisionShape2D" parent="markerToRoad1/Area2D" index="0"]
+shape = SubResource( 2 )
+
+[node name="Sprite" parent="markerToRoad1" index="2"]
+texture = ExtResource( 4 )
+
+[node name="markerToCrossRoads" parent="." index="5" instance=ExtResource( 3 )]
+position = Vector2( 702.631, 249.027 )
+image = ExtResource( 4 )
+itemType = "door"
+removeItemOnPower = false
+reactionText = {
+}
+keys = [ "sickle" ]
+doorLocked = true
+doorExit = "res://Rooms/woodsCrossroads.tscn"
+doorLockedText = "Thick Vines cover this mile marker. I guess you can't follow the path if you don't know where to go!"
+doorUseText = "You hack away the vines. Oh, it's this way!"
+
+[node name="CollisionShape2D" parent="markerToCrossRoads/Area2D" index="0"]
+position = Vector2( -43.1335, 55.1543 )
+shape = SubResource( 3 )
+
+[node name="Sprite" parent="markerToCrossRoads" index="2"]
+position = Vector2( -41.0121, 51.6188 )
+scale = Vector2( 0.414427, 0.414427 )
+texture = ExtResource( 4 )
+
+[node name="Light2D" parent="markerToCrossRoads" index="4"]
+position = Vector2( -38.8909, 42.4264 )
+
+[node name="AnimationPlayer" parent="markerToCrossRoads" index="5"]
+anims/flicker = SubResource( 4 )
+
+[node name="arcadeMachine" parent="." index="6" instance=ExtResource( 3 )]
+position = Vector2( 749.623, 374.897 )
+image = ExtResource( 5 )
+itemType = "useable"
+viewText = [ "What's an arcade machine doing in the woods?", "You decide to take a quick break from adventuring and play the game..", "..you don't recognise the game on the machine.", "No matter! Games are games, right? ", "...", "Drat! This one isn't free play!", "Does anyone have a quarter?" ]
+reactionText = {
+"brink": [ "Brink says HI to the arcade machine.", "They are now friends" ],
+"coin": [ "This is really sad..", "The coin is too big to fit into the slot!", "You were so close to playing a game inside of a game!" ],
+"rat": [ "You try to push the rat into the coin slot.", "Unfortunately, that doesn't work.", "Why did you think it would?" ],
+"woodenClub": [ "NO!!!", "Do NOT Do that!", "Do I have to take away that club?" ]
+}
+
+[node name="CollisionShape2D" parent="arcadeMachine/Area2D" index="0"]
+shape = SubResource( 5 )
+
+[node name="Sprite" parent="arcadeMachine" index="2"]
+texture = ExtResource( 5 )
+
+[node name="walkPos" parent="arcadeMachine" index="3"]
+position = Vector2( -98.2236, 111.554 )
+
+[node name="roadVines" parent="." index="8" instance=ExtResource( 3 )]
+position = Vector2( 629.701, 294.085 )
+image = ExtResource( 6 )
+
+[node name="CollisionShape2D" parent="roadVines/Area2D" index="0"]
+position = Vector2( -827.315, -76.3675 )
+shape = SubResource( 6 )
+
+[node name="Sprite" parent="roadVines" index="2"]
+position = Vector2( 10.0794, 10.0793 )
+scale = Vector2( 0.724392, 0.724392 )
+texture = ExtResource( 6 )
+
+[connection signal="doorUnlock" from="markerToCrossRoads" to="roadVines" method="hideItem"]
+
+[editable path="markerToRoad1"]
+[editable path="markerToCrossRoads"]
+[editable path="arcadeMachine"]
+[editable path="roadVines"]

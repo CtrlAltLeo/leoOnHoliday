@@ -1,0 +1,70 @@
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://Scenes/mainScene.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Images/Rooms/tavern2.png" type="Texture" id=2]
+[ext_resource path="res://Scenes/item.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Images/Items/welcomeMat.png" type="Texture" id=4]
+[ext_resource path="res://Images/Items/saltPile.png" type="Texture" id=5]
+
+[sub_resource type="NavigationPolygon" id=1]
+vertices = PoolVector2Array( 1111.93, 556.175, 108.242, 543.094, 258.082, 449.146, 655.277, 456.282, 677.872, 437.254, 695.71, 282.657, 966.715, 144.147, 1127.39, 538.337, 656.467, 314.766 )
+polygons = [ PoolIntArray( 0, 1, 2, 3 ), PoolIntArray( 0, 3, 4 ), PoolIntArray( 5, 6, 7, 0, 4, 8 ) ]
+outlines = [ PoolVector2Array( 258.082, 449.146, 655.277, 456.282, 677.872, 437.254, 656.467, 314.766, 695.71, 282.657, 966.715, 144.147, 1127.39, 538.337, 1111.93, 556.175, 108.242, 543.094 ) ]
+
+[sub_resource type="RectangleShape2D" id=2]
+resource_local_to_scene = true
+extents = Vector2( 102.366, 28.7339 )
+
+[sub_resource type="RectangleShape2D" id=3]
+resource_local_to_scene = true
+extents = Vector2( 32.651, 32.6374 )
+
+[node name="theCalypso" instance=ExtResource( 1 )]
+
+[node name="background" parent="." index="0"]
+texture = ExtResource( 2 )
+
+[node name="CollisionPolygon2D" parent="walkableArea" index="0"]
+position = Vector2( 3.56763, 0 )
+polygon = PoolVector2Array( -3.54706, 595.215, 153.428, 508.403, 522.082, 514.349, 557.759, 498.889, 547.056, 354.995, 587.489, 343.103, 858.54, 200.144, 1009.66, 580.944, 1012.04, 607.107 )
+
+[node name="NavigationPolygonInstance" parent="Navigation2D" index="0"]
+navpoly = SubResource( 1 )
+
+[node name="player" parent="." index="3"]
+position = Vector2( 630.501, 493.063 )
+
+[node name="storyBar" parent="." index="4" instance=ExtResource( 3 )]
+position = Vector2( -234.274, 38.0546 )
+itemType = "story"
+viewText = [ "This is the funniest tavern in the game.", "You can walk on things you're not supposed to walk on.", "Why?", "Developers get sleepy too." ]
+viewOnReady = true
+
+[node name="matToCity" parent="." index="5" instance=ExtResource( 3 )]
+position = Vector2( 869.274, 549.511 )
+rotation = -0.00647104
+image = ExtResource( 4 )
+itemType = "door"
+doorExit = "res://Rooms/city.tscn"
+doorUseText = "You welcome yourself back to the city."
+
+[node name="CollisionShape2D" parent="matToCity/Area2D" index="0"]
+shape = SubResource( 2 )
+
+[node name="Sprite" parent="matToCity" index="2"]
+texture = ExtResource( 4 )
+
+[node name="saltPile" parent="." index="6" instance=ExtResource( 3 )]
+position = Vector2( 511.47, 312.529 )
+image = ExtResource( 5 )
+itemType = "pickup"
+viewText = [ "You scoop the pile of salt up into your hand.", "Another weird thing for your pocket." ]
+
+[node name="CollisionShape2D" parent="saltPile/Area2D" index="0"]
+shape = SubResource( 3 )
+
+[node name="Sprite" parent="saltPile" index="2"]
+texture = ExtResource( 5 )
+
+[editable path="matToCity"]
+[editable path="saltPile"]

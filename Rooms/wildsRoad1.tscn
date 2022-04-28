@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://Images/Rooms/wildsRoad1.png" type="Texture" id=1]
 [ext_resource path="res://Scenes/mainScene.tscn" type="PackedScene" id=2]
@@ -8,6 +8,7 @@
 [ext_resource path="res://Images/People/brigand1.png" type="Texture" id=6]
 [ext_resource path="res://Images/Items/bone.png" type="Texture" id=7]
 [ext_resource path="res://Sounds/Sunn Forest - ELPHNT.mp3" type="AudioStream" id=8]
+[ext_resource path="res://Scenes/fastTravel.tscn" type="PackedScene" id=9]
 
 [sub_resource type="NavigationPolygon" id=1]
 vertices = PoolVector2Array( 762.469, 318, 880.453, 292.515, 958.795, 332.158, 805.887, 374.632, 734.152, 347.26, 937.085, 518.101, 942.749, 542.642, 224.46, 532.259, 317.904, 427.489, 763.413, 456.749, 789.841, 223.612, 894.611, 232.107 )
@@ -118,6 +119,10 @@ viewText = [ "A bone on the ground?", "This place is hardcore.." ]
 
 [node name="player" parent="." index="8"]
 position = Vector2( 366.666, 528.066 )
+
+[node name="fastTravel" parent="." index="9" instance=ExtResource( 9 )]
+Name = "Wild Roads"
+location = "res://Rooms/wildsRoad1.tscn"
 
 [editable path="markerToField"]
 [editable path="markerToRoads2"]

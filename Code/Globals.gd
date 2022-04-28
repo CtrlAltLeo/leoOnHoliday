@@ -1,5 +1,7 @@
 extends Node
 
+var fastTravels = {"place":"res://Meta/DebugScreen.tscn"}
+
 
 signal stopPlayer
 signal startPlayer
@@ -26,6 +28,8 @@ signal dioBoxOver
 
 var path = []
 
+var dioBoxOpen = false
+
 func getPathTo(startPos, endPos):
 	emit_signal("getPath", startPos, endPos)
 
@@ -38,6 +42,7 @@ var queuedDioBoxes = []
 
 func addDioBox(textArray, face: String = "",faceArr: Array = []):
 	
+	dioBoxOpen = true
 	emit_signal("addTextBox", textArray, face, faceArr)
 	emit_signal("stopPlayer")
 	
@@ -54,6 +59,8 @@ func removeItem(id):
 func dioBoxOver():
 	emit_signal("startPlayer")
 	emit_signal("dioBoxOver")
+	activeItem = ""
+	dioBoxOpen = false
 	
 func _ready():
 	emit_signal("updateInventory")
@@ -70,6 +77,12 @@ func activateQueuedDio():
 		addDioBox(queuedDioBoxes[0])
 		
 	queuedDioBoxes.clear()
+	
+func stopPlayer():
+	emit_signal("stopPlayer")
+	
+func startPlayer():
+	emit_signal("startPlayer")
 	
 	
 	

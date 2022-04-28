@@ -49,4 +49,15 @@ scale = Vector2( 1.70101, 1.70101 )
 z_index = -1
 texture = ExtResource( 4 )
 
+[node name="quit" type="Button" parent="."]
+margin_left = 496.498
+margin_top = 548.7
+margin_right = 534.498
+margin_bottom = 568.7
+text = "skip"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [connection signal="timeout" from="canSeeTimer" to="." method="_on_canSeeTimer_timeout"]
+[connection signal="pressed" from="quit" to="." method="_on_quit_pressed"]

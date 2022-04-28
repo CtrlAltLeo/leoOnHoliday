@@ -202,13 +202,13 @@ image = ExtResource( 12 )
 itemType = "pickup"
 
 [connection signal="activateSignal" from="regularKing" to="nes" method="pickup"]
-[connection signal="powerSignal" from="corruptKing" to="regularKing" method="showItem"]
 [connection signal="powerSignal" from="corruptKing" to="corruptKing" method="hideItem"]
-[connection signal="activateSignal" from="courtWizard" to="guardToCourtyard" method="unlockDoor"]
+[connection signal="powerSignal" from="corruptKing" to="regularKing" method="showItem"]
 [connection signal="activateSignal" from="courtWizard" to="steelHelmet" method="pickup"]
-[connection signal="activateSignal" from="courtWizard" to="courtWizard" method="hideItem"]
-[connection signal="activateSignal" from="courtWizard" to="courtWizard2" method="showItem"]
 [connection signal="activateSignal" from="courtWizard" to="sickle" method="pickup"]
+[connection signal="activateSignal" from="courtWizard" to="courtWizard2" method="showItem"]
+[connection signal="activateSignal" from="courtWizard" to="courtWizard" method="hideItem"]
+[connection signal="activateSignal" from="courtWizard" to="guardToCourtyard" method="unlockDoor"]
 
 [editable path="guardToCourtyard"]
 [editable path="regularKing"]

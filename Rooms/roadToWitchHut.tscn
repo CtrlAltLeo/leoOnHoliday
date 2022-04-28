@@ -1,25 +1,25 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://Scenes/mainScene.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Images/Rooms/woods2.png" type="Texture" id=2]
 [ext_resource path="res://Images/Items/woodenSign.png" type="Texture" id=3]
 [ext_resource path="res://Scenes/item.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Images/People/capybara.png" type="Texture" id=5]
 
 [sub_resource type="NavigationPolygon" id=1]
 vertices = PoolVector2Array( 1001.6, 544.501, 647.6, 537.501, 761.6, 429.501, 1005.6, 411.501, 449.6, 192.501, 437.6, 175.501, 473.6, 168.501, 498.6, 179.501, 485.6, 234.501, 691.6, 291.501, 588.6, 326.501, 618.6, 296.501, 549.6, 340.501, 382.6, 270.501 )
 polygons = [ PoolIntArray( 0, 1, 2, 3 ), PoolIntArray( 4, 5, 6, 7, 8 ), PoolIntArray( 9, 3, 2, 10, 11 ), PoolIntArray( 8, 11, 10, 12, 13 ), PoolIntArray( 8, 13, 4 ) ]
 outlines = [ PoolVector2Array( 647.6, 537.501, 761.6, 429.501, 588.6, 326.501, 549.6, 340.501, 382.6, 270.501, 449.6, 192.501, 437.6, 175.501, 473.6, 168.501, 498.6, 179.501, 485.6, 234.501, 618.6, 296.501, 691.6, 291.501, 1005.6, 411.501, 1001.6, 544.501 ) ]
 
-[sub_resource type="RectangleShape2D" id=4]
+[sub_resource type="RectangleShape2D" id=2]
 resource_local_to_scene = true
 extents = Vector2( 33.7621, 32.7478 )
 
-[sub_resource type="RectangleShape2D" id=2]
+[sub_resource type="RectangleShape2D" id=3]
 resource_local_to_scene = true
 extents = Vector2( 49.1926, 92.3428 )
 
-[sub_resource type="Animation" id=3]
-resource_name = "flicker"
+[sub_resource type="Animation" id=4]
 length = 2.0
 tracks/0/type = "value"
 tracks/0/path = NodePath("../AlphusWizard/Light2D:energy")
@@ -33,6 +33,10 @@ tracks/0/keys = {
 "update": 0,
 "values": [ 0.0, 3.0, 0.0 ]
 }
+
+[sub_resource type="RectangleShape2D" id=5]
+resource_local_to_scene = true
+extents = Vector2( 126.705, 60.2669 )
 
 [node name="roadToWitchHut" instance=ExtResource( 1 )]
 
@@ -52,12 +56,14 @@ position = Vector2( 742.337, 539.576 )
 position = Vector2( 381.01, 183.691 )
 image = ExtResource( 3 )
 itemType = "door"
+doorLocked = true
 doorExit = "res://Rooms/witchHut.tscn"
+doorLockedText = "You can't just walk around this capybara!"
 doorUseText = "You follow the path to the Witch's Hut."
 
 [node name="CollisionShape2D" parent="signToHut/Area2D" index="0"]
 position = Vector2( -2.11893, 11.6541 )
-shape = SubResource( 4 )
+shape = SubResource( 2 )
 
 [node name="Sprite" parent="signToHut" index="2"]
 position = Vector2( 2.66966, 0 )
@@ -75,7 +81,7 @@ doorUseText = "You return to the crossroads."
 
 [node name="CollisionShape2D" parent="signToCrossroads/Area2D" index="0"]
 position = Vector2( -1.05951, -16.9514 )
-shape = SubResource( 2 )
+shape = SubResource( 3 )
 
 [node name="Sprite" parent="signToCrossroads" index="2"]
 position = Vector2( 2.66973, -33.371 )
@@ -87,7 +93,22 @@ position = Vector2( -153.092, -101.708 )
 scale = Vector2( 1.84426, 2.48987 )
 
 [node name="AnimationPlayer" parent="signToCrossroads" index="5"]
-anims/flicker = SubResource( 3 )
+anims/flicker = SubResource( 4 )
+
+[node name="capybara" parent="." index="7" instance=ExtResource( 4 )]
+position = Vector2( 519.377, 328.675 )
+image = ExtResource( 5 )
+itemType = "useable"
+viewText = [ "A huge capybara blocks your path!", "It's not the worst thing that could block your path..", "But it's still inconvenient.", "How do you get these guys to move, anyway?", "Why would you want to? They're so cute!" ]
+
+[node name="CollisionShape2D" parent="capybara/Area2D" index="0"]
+shape = SubResource( 5 )
+
+[node name="Sprite" parent="capybara" index="2"]
+texture = ExtResource( 5 )
+
+[connection signal="powerSignal" from="capybara" to="signToHut" method="unlockDoor"]
 
 [editable path="signToHut"]
 [editable path="signToCrossroads"]
+[editable path="capybara"]

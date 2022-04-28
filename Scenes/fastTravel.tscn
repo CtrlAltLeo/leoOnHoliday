@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Images/UI/door.png" type="Texture" id=1]
+[ext_resource path="res://Scenes/fastTravel.gd" type="Script" id=2]
+
+[node name="fastTravel" type="Node2D"]
+script = ExtResource( 2 )
+
+[node name="Sprite" type="Sprite" parent="."]
+position = Vector2( -118.801, 68.0768 )
+texture = ExtResource( 1 )

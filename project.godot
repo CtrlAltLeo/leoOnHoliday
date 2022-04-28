@@ -17,6 +17,7 @@ config/icon="res://icon.png"
 [autoload]
 
 Globals="*res://Code/Globals.gd"
+WorldMap="*res://Scenes/worldMap.tscn"
 Inventory="*res://Scenes/Inventory.tscn"
 Cursor="*res://Scenes/Cursor.tscn"
 MusicBox="*res://Scenes/MusicBox.tscn"

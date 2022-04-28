@@ -43,9 +43,6 @@ polygon = PoolVector2Array( 8.26422, 571.816, 455.536, 425.665, 648.304, 379.048
 [node name="NavigationPolygonInstance" parent="Navigation2D" index="0"]
 navpoly = SubResource( 1 )
 
-[node name="player" parent="." index="3"]
-position = Vector2( 261.491, 532.198 )
-
 [node name="signToRoadStop" parent="." index="4" instance=ExtResource( 4 )]
 position = Vector2( 907.517, 236.887 )
 image = ExtResource( 3 )
@@ -122,6 +119,9 @@ position = Vector2( 666.454, 496.132 )
 image = ExtResource( 5 )
 itemType = "pickup"
 viewText = [ "oh my freaking Jim", "You just...", "You just bend over and pick a rat off from the ground.", "How the heck are you going to hold that?!", "It's just going to \"ride along\" in your pocket?!", "You are such a crackhead", "I like that.", "That rat sure doens't though", "With a reluctant squeak, it crawls into your pocket." ]
+reactionText = {
+"woodenClub": [ "Using the wooden club, you beat the rat to death.", "Just kidding, it's a plot hold. Pick it up!" ]
+}
 
 [node name="CollisionShape2D" parent="rat/Area2D" index="0"]
 shape = SubResource( 6 )
@@ -131,6 +131,9 @@ texture = ExtResource( 5 )
 
 [node name="walkPos" parent="rat" index="3"]
 position = Vector2( -60.0167, 32.1435 )
+
+[node name="player" parent="." index="9"]
+position = Vector2( 261.491, 532.198 )
 
 [editable path="signToRoadStop"]
 [editable path="signToCaveEnterance"]

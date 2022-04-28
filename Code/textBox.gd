@@ -97,3 +97,7 @@ func changeFace():
 	else:
 		$portrait.texture = load(npcFace)
 		print("npcFace")
+
+
+func _on_quit_pressed():
+	close()

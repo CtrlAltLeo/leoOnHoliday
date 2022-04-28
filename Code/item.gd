@@ -185,6 +185,11 @@ func activate():
 			Globals.addDioBox(viewText, npcFace.load_path, faceArray)
 	
 	if itemType == "pickup":
+		
+		if Globals.activeItem != "":
+			showReactionText()
+			return
+		
 		Globals.addDioBox(viewText) #The text is only shown when you pick it up, not when it's given
 		pickup()
 		

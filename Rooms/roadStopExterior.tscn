@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://Images/Rooms/roadStop.png" type="Texture" id=1]
 [ext_resource path="res://Scenes/mainScene.tscn" type="PackedScene" id=2]
@@ -8,6 +8,7 @@
 [ext_resource path="res://Images/People/guyActor.png" type="Texture" id=6]
 [ext_resource path="res://Images/Items/woodenSign.png" type="Texture" id=7]
 [ext_resource path="res://Sounds/Wehrmut - Godmode.mp3" type="AudioStream" id=8]
+[ext_resource path="res://Scenes/fastTravel.tscn" type="PackedScene" id=9]
 
 [sub_resource type="NavigationPolygon" id=1]
 vertices = PoolVector2Array( 1131.06, 538.668, 135.169, 533.371, 293.029, 484.635, 305.743, 431.662, 197.678, 405.176, 225.224, 378.689, 843.95, 382.927, 893.745, 360.678, 1138.48, 373.392 )
@@ -45,9 +46,6 @@ polygon = PoolVector2Array( 28.8073, 591.048, 182.429, 540.194, 190.905, 486.162
 
 [node name="NavigationPolygonInstance" parent="Navigation2D" index="0"]
 navpoly = SubResource( 1 )
-
-[node name="player" parent="." index="3"]
-position = Vector2( 700.337, 537.576 )
 
 [node name="banjo" parent="." index="4" instance=ExtResource( 3 )]
 position = Vector2( 904.268, 535.15 )
@@ -135,6 +133,13 @@ texture = ExtResource( 7 )
 
 [node name="Light2D" parent="signToRoad" index="4"]
 position = Vector2( -1.05945, -6.35681 )
+
+[node name="player" parent="." index="9"]
+position = Vector2( 700.337, 537.576 )
+
+[node name="fastTravel" parent="." index="10" instance=ExtResource( 9 )]
+Name = "The Purple Marker"
+location = "res://Rooms/roadStopExterior.tscn"
 
 [connection signal="powerSignal" from="guy1" to="roadstopDoor" method="unlockDoor"]
 

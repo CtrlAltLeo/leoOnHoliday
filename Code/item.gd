@@ -8,6 +8,8 @@ export(String,"nills", "view", "pickup", "useable", "door", "inventory", "NPC", 
 
 var walkPos = Vector2()
 
+var startPosition = Vector2()
+
 var canClick = false
 
 export (Array, String) var viewText 
@@ -36,6 +38,7 @@ signal doorUnlock
 
 func _ready():
 	
+	startPosition = self.position
 
 	Globals.connect("disconnectAll", self, "disconnectFromPlayer")
 	
@@ -238,3 +241,6 @@ func hideItem():
 func showItem():
 	self.show()
 	Globals.items[self.id_name]["remove"] = false
+	
+func resetPosition():
+	self.position = startPosition

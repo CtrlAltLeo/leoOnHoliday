@@ -45,9 +45,6 @@ polygon = PoolVector2Array( 200.988, 284.712, 287.6, 283.871, 503.71, 445.323, 6
 [node name="NavigationPolygonInstance" parent="Navigation2D" index="0"]
 navpoly = SubResource( 1 )
 
-[node name="player" parent="." index="3"]
-position = Vector2( 513.159, 534.857 )
-
 [node name="directionSign" parent="." index="4" instance=ExtResource( 4 )]
 position = Vector2( 500.445, 311.311 )
 image = ExtResource( 3 )
@@ -83,12 +80,12 @@ position = Vector2( 6.65791, 259.137 )
 position = Vector2( -213.574, 125.475 )
 itemType = "story"
 viewText = [ "Getting this far into your quest, you realize there is still a long way to go.", "You haven't even walked for a day, but the realization that Home is just a little closer spurs you onward.", "The adventure so far has been mostly peaceful, but the oppressive woods only contribute to a sense of mounting dread.", "You are trapped.", "And you might never see home again." ]
-viewOnReady = true
 
 [node name="signToBadLands" parent="." index="7" instance=ExtResource( 4 )]
 position = Vector2( 242.604, 223.672 )
 image = ExtResource( 7 )
-doorLocked = true
+itemType = "door"
+doorExit = "res://Rooms/enterBadlands.tscn"
 doorLockedText = "You can't go there yet!"
 
 [node name="CollisionShape2D" parent="signToBadLands/Area2D" index="0"]
@@ -141,6 +138,9 @@ texture = ExtResource( 7 )
 
 [node name="walkPos" parent="signToRobber" index="3"]
 position = Vector2( 118.086, 77.9183 )
+
+[node name="player" parent="." index="10"]
+position = Vector2( 513.159, 534.857 )
 
 [editable path="directionSign"]
 [editable path="crow"]

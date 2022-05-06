@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/Yah Ribon - E's Jammy Jams.mp3-b150a8d449db623c4932e17cc2a69ad4.mp3str"
+
+[deps]
+
+source_file="res://Sounds/Yah Ribon - E's Jammy Jams.mp3"
+dest_files=[ "res://.import/Yah Ribon - E's Jammy Jams.mp3-b150a8d449db623c4932e17cc2a69ad4.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

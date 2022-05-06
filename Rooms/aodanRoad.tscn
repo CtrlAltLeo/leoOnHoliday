@@ -131,6 +131,7 @@ position = Vector2( 638.072, 337.051 )
 image = ExtResource( 3 )
 itemType = "door"
 doorExit = "res://Rooms/wizardRoad.tscn"
+doorUseText = "You do the thing."
 
 [node name="CollisionShape2D" parent="signToWizardRoad/Area2D" index="0"]
 position = Vector2( 28.4679, 53.9391 )

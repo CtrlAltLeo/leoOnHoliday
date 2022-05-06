@@ -1,0 +1,126 @@
+[gd_scene load_steps=13 format=2]
+
+[ext_resource path="res://Images/Rooms/badlands1.png" type="Texture" id=1]
+[ext_resource path="res://Scenes/mainScene.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Scenes/item.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Images/People/desertNomad1.png" type="Texture" id=4]
+[ext_resource path="res://Images/Portraits/desertNomad1Face.png" type="Texture" id=5]
+[ext_resource path="res://Sounds/Yah Ribon - E's Jammy Jams.mp3" type="AudioStream" id=6]
+[ext_resource path="res://Images/Items/woodenSign.png" type="Texture" id=7]
+
+[sub_resource type="NavigationPolygon" id=1]
+vertices = PoolVector2Array( 578.729, 379.618, 543.053, 322.537, 659.595, 309.455, 766.624, 315.401, 1132.9, 547.297, 1131.71, 292.806, 110.182, 538.972, 120.884, 347.51, 456.241, 381.997 )
+polygons = [ PoolIntArray( 0, 1, 2, 3, 4 ), PoolIntArray( 3, 5, 4 ), PoolIntArray( 4, 6, 7, 8 ), PoolIntArray( 4, 8, 0 ) ]
+outlines = [ PoolVector2Array( 120.884, 347.51, 456.241, 381.997, 578.729, 379.618, 543.053, 322.537, 659.595, 309.455, 766.624, 315.401, 1131.71, 292.806, 1132.9, 547.297, 110.182, 538.972 ) ]
+
+[sub_resource type="RectangleShape2D" id=2]
+resource_local_to_scene = true
+extents = Vector2( 33.7621, 32.7478 )
+
+[sub_resource type="RectangleShape2D" id=3]
+resource_local_to_scene = true
+extents = Vector2( 35.7638, 109.01 )
+
+[sub_resource type="RectangleShape2D" id=4]
+resource_local_to_scene = true
+extents = Vector2( 45.2697, 67.314 )
+
+[sub_resource type="Animation" id=5]
+resource_name = "flicker"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("../AlphusWizard/Light2D:energy")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1, 2 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ 0.0, 3.0, 0.0 ]
+}
+
+[node name="enterBadlands" instance=ExtResource( 2 )]
+sceneMusic = ExtResource( 6 )
+
+[node name="background" parent="." index="0"]
+texture = ExtResource( 1 )
+
+[node name="CollisionPolygon2D" parent="walkableArea" index="0"]
+polygon = PoolVector2Array( 17.4196, 405.577, 359.911, 436.496, 472.886, 431.739, 440.777, 377.036, 539.481, 363.955, 671.483, 375.847, 1024.68, 348.495, 1025.87, 593.472, 1.95993, 595.85 )
+
+[node name="NavigationPolygonInstance" parent="Navigation2D" index="0"]
+navpoly = SubResource( 1 )
+
+[node name="player" parent="." index="4"]
+position = Vector2( 838.484, 492.25 )
+
+[node name="badlandsStory1" parent="." index="5" instance=ExtResource( 3 )]
+position = Vector2( -197.553, 166.124 )
+itemType = "story"
+viewText = [ "The terrain of the world switchs abruptly. You're now in a rough badlands.", "The sun shines brighter than before, and you're filled with a renewed sense of purpose." ]
+
+[node name="CollisionShape2D" parent="badlandsStory1/Area2D" index="0"]
+shape = SubResource( 2 )
+
+[node name="nomad1" parent="." index="6" instance=ExtResource( 3 )]
+position = Vector2( 489.946, 358.095 )
+image = ExtResource( 4 )
+itemType = "NPC"
+viewText = [ "Hello, traveler..", "What bringsss you to the badlandss of this realm?", "I'm on a quest to return to my home place slash world slash dimension.", "Very interessting.. ", "Are you traveling alone..?", "I am inclined to trust to you immediately.", "Yes, it's just me.", "I would watch your back, if I were you..", "Not everything in the badlandss is as it sseems.", "That certainly sounds like a threat.", "Oh, it isss..." ]
+npcFace = ExtResource( 5 )
+faceArray = [ 2, 2, 1, 2, 2, 1, 1, 2, 2, 1, 2 ]
+
+[node name="CollisionShape2D" parent="nomad1/Area2D" index="0"]
+shape = SubResource( 3 )
+
+[node name="Sprite" parent="nomad1" index="2"]
+texture = ExtResource( 4 )
+
+[node name="walkPos" parent="nomad1" index="3"]
+position = Vector2( 141.263, 135.47 )
+
+[node name="signToCrossRoads" parent="." index="7" instance=ExtResource( 3 )]
+position = Vector2( 945.168, 454.084 )
+image = ExtResource( 7 )
+itemType = "door"
+doorExit = "res://Rooms/forkRoad.tscn"
+
+[node name="CollisionShape2D" parent="signToCrossRoads/Area2D" index="0"]
+position = Vector2( 4.75684, 35.6762 )
+shape = SubResource( 4 )
+
+[node name="Sprite" parent="signToCrossRoads" index="2"]
+position = Vector2( 8.02716, 29.4329 )
+scale = Vector2( 0.700376, 0.700376 )
+texture = ExtResource( 7 )
+
+[node name="walkPos" parent="signToCrossRoads" index="3"]
+position = Vector2( -80.0469, 102.875 )
+
+[node name="signToBadlands2" parent="." index="8" instance=ExtResource( 3 )]
+position = Vector2( 113.912, 376.786 )
+image = ExtResource( 7 )
+reactionText = {
+}
+
+[node name="CollisionShape2D" parent="signToBadlands2/Area2D" index="0"]
+position = Vector2( 4.75684, 35.6762 )
+shape = SubResource( 4 )
+
+[node name="Sprite" parent="signToBadlands2" index="2"]
+position = Vector2( 8.02716, 29.4329 )
+scale = Vector2( 0.700376, 0.700376 )
+texture = ExtResource( 7 )
+
+[node name="walkPos" parent="signToBadlands2" index="3"]
+position = Vector2( -80.0469, 102.875 )
+
+[node name="AnimationPlayer" parent="signToBadlands2" index="5"]
+anims/flicker = SubResource( 5 )
+
+[editable path="badlandsStory1"]
+[editable path="nomad1"]
+[editable path="signToCrossRoads"]
+[editable path="signToBadlands2"]

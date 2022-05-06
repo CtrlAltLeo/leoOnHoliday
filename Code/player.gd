@@ -83,6 +83,9 @@ func changeSize():
 func _process(delta):
 	
 	
+
+	
+	
 	if moving:
 		moveTo()
 		

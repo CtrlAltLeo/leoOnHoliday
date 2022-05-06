@@ -139,8 +139,8 @@ texture = ExtResource( 6 )
 [node name="walkPos" parent="todd" index="3"]
 position = Vector2( 108.543, 139.273 )
 
-[connection signal="powerSignal" from="todd" to="signToWitchHut" method="unlockDoor"]
 [connection signal="powerSignal" from="todd" to="pillarToGrove" method="unlockDoor"]
+[connection signal="powerSignal" from="todd" to="signToWitchHut" method="unlockDoor"]
 
 [editable path="markerToRoad2"]
 [editable path="pillarToGrove"]

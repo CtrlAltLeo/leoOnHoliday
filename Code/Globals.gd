@@ -1,6 +1,6 @@
 extends Node
 
-var fastTravels = {"place":"res://Meta/DebugScreen.tscn"}
+var fastTravels = {}
 
 
 signal stopPlayer

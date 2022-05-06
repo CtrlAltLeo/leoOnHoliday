@@ -1,9 +1,10 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://Scenes/mainScene.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Images/Rooms/Curioshop.png" type="Texture" id=2]
 [ext_resource path="res://Scenes/item.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Images/Items/welcomeMat.png" type="Texture" id=4]
+[ext_resource path="res://Images/Items/nesPowerGlove.png" type="Texture" id=5]
 
 [sub_resource type="NavigationPolygon" id=1]
 vertices = PoolVector2Array( 675.6, 448.501, 735.6, 532.501, 390.6, 533.501, 462.6, 368.501, 533.6, 310.501, 565.6, 200.501, 593.6, 188.501, 619.6, 331.501, 687.6, 351.501, 721.6, 388.501 )
@@ -12,7 +13,15 @@ outlines = [ PoolVector2Array( 390.6, 533.501, 462.6, 368.501, 533.6, 310.501, 5
 
 [sub_resource type="RectangleShape2D" id=2]
 resource_local_to_scene = true
+extents = Vector2( 33.7621, 32.7478 )
+
+[sub_resource type="RectangleShape2D" id=3]
+resource_local_to_scene = true
 extents = Vector2( 103.042, 31.1258 )
+
+[sub_resource type="RectangleShape2D" id=4]
+resource_local_to_scene = true
+extents = Vector2( 47.5067, 65.8323 )
 
 [node name="curioShop" instance=ExtResource( 1 )]
 
@@ -26,7 +35,21 @@ polygon = PoolVector2Array( 284, 596, 362, 416, 422, 358, 453, 260, 486, 251, 51
 navpoly = SubResource( 1 )
 
 [node name="fakeItesm" parent="." index="4" instance=ExtResource( 3 )]
-position = Vector2( -205.411, 103.266 )
+position = Vector2( -225.615, 138.062 )
+itemType = "view"
+viewText = [ "Bro..", "You think man's just gonna add a unique item for each funny thing here?" ]
+
+[node name="CollisionShape2D" parent="fakeItesm/Area2D" index="0"]
+shape = SubResource( 2 )
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="fakeItesm/Area2D" index="1"]
+polygon = PoolVector2Array( 221.615, 111.938, 266.615, -130.062, 574.615, -123.062, 711.615, -51.0623, 695.615, 98.9377, 648.615, 146.938, 561.615, 268.938, 477.615, 454.938, 248.615, 454.938 )
+
+[node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="fakeItesm/Area2D" index="2"]
+polygon = PoolVector2Array( 873.615, 262.938, 932.615, 223.938, 1177.62, 206.938, 1232.62, 292.938, 1226.62, -117.062, 623.615, -132.062, 636.615, -108.062, 738.615, -57.0623, 733.615, 96.9377, 821.615, 265.938 )
+
+[node name="walkPos" parent="fakeItesm" index="3"]
+position = Vector2( 685.414, 265.605 )
 
 [node name="matToCity" parent="." index="5" instance=ExtResource( 3 )]
 position = Vector2( 450.107, 558.986 )
@@ -36,13 +59,35 @@ doorExit = "res://Rooms/city.tscn"
 doorUseText = "You step over the welcome mat to the city."
 
 [node name="CollisionShape2D" parent="matToCity/Area2D" index="0"]
-shape = SubResource( 2 )
+shape = SubResource( 3 )
 
 [node name="Sprite" parent="matToCity" index="2"]
 texture = ExtResource( 4 )
 
-[node name="curioItem" parent="." index="6" instance=ExtResource( 3 )]
-itemType = "story"
-viewText = [ "No one seems to be running this store.", "Surely they wouldn't mind if you borrowed something with the intention to return it, right?" ]
+[node name="powerGlove" parent="." index="7" instance=ExtResource( 3 )]
+position = Vector2( 749.756, 469.207 )
+image = ExtResource( 5 )
+itemType = "pickup"
+viewText = [ "Let's freaking gooo", "An NES Powerglove?", "This is one of the most powerful weapons ever created.", "You could do some serious damage with this!", "Or play Duck Hunt.." ]
+sparkle = true
 
+[node name="CollisionShape2D" parent="powerGlove/Area2D" index="0"]
+position = Vector2( -10.6787, 0.667419 )
+shape = SubResource( 4 )
+
+[node name="Sprite" parent="powerGlove" index="2"]
+position = Vector2( -7.00787, 0.33371 )
+rotation = 0.310877
+scale = Vector2( 1.88642, 1.88642 )
+texture = ExtResource( 5 )
+
+[node name="walkPos" parent="powerGlove" index="3"]
+position = Vector2( -177.455, 74.6136 )
+
+[node name="CurioStories" parent="." index="8" instance=ExtResource( 3 )]
+itemType = "story"
+viewText = [ "No one seems to be running the store..", "Surely they wouldn't mind if you borrowed something with the intention to return it, right?" ]
+
+[editable path="fakeItesm"]
 [editable path="matToCity"]
+[editable path="powerGlove"]

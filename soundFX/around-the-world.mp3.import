@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/around-the-world.mp3-7ca67642785a16a9fbba9d1298e30e4b.mp3str"
+
+[deps]
+
+source_file="res://soundFX/around-the-world.mp3"
+dest_files=[ "res://.import/around-the-world.mp3-7ca67642785a16a9fbba9d1298e30e4b.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

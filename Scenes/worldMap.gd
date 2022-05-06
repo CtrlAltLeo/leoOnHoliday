@@ -3,6 +3,10 @@ extends Node2D
 var locationP = load("res://Scenes/locationPoint.tscn")
 
 var open = false
+
+func _ready():
+	Globals.connect("hideUI", self, "hide")
+	Globals.connect("showUI", self, "show")
 	
 
 func createLocationNodes():

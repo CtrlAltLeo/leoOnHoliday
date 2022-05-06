@@ -30,13 +30,15 @@ export(String) var doorUseText = "You open the door."
 export(Texture) var npcFace
 export(Array, int) var faceArray
 
-
+export var sparkle = false
 
 signal powerSignal
 signal activateSignal
 signal doorUnlock
 
 func _ready():
+	
+	$CPUParticles2D.emitting = sparkle
 	
 	startPosition = self.position
 

@@ -16,6 +16,8 @@ var activeItem = ""
 var items = {}
 
 signal updateInventory
+signal hideUI
+signal showUI
 
 signal getPath(start, end)
 signal pathReady
@@ -29,6 +31,8 @@ signal dioBoxOver
 var path = []
 
 var dioBoxOpen = false
+
+var cutscenesPlayed = []
 
 func getPathTo(startPos, endPos):
 	emit_signal("getPath", startPos, endPos)
@@ -83,6 +87,12 @@ func stopPlayer():
 	
 func startPlayer():
 	emit_signal("startPlayer")
+	
+func hideUI():
+	emit_signal("hideUI")
+	
+func showUI():
+	emit_signal("showUI")
 	
 	
 	

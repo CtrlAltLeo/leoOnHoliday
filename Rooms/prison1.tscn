@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://Scenes/mainScene.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Images/Rooms/prisonRoom.png" type="Texture" id=2]
@@ -6,6 +6,7 @@
 [ext_resource path="res://Images/Items/skeleton.png" type="Texture" id=4]
 [ext_resource path="res://Images/Items/chains.png" type="Texture" id=5]
 [ext_resource path="res://Images/Items/boneKey.png" type="Texture" id=6]
+[ext_resource path="res://Sounds/Dragón Rojo - The Mini Vandals.mp3" type="AudioStream" id=7]
 
 [sub_resource type="NavigationPolygon" id=1]
 vertices = PoolVector2Array( 946.534, 463.849, 1079.28, 499.485, 1138.97, 536.903, 523.358, 541.358, 574.139, 445.141, 458.322, 418.414, 599.084, 295.47, 734.501, 307.942, 903.771, 361.396 )
@@ -29,6 +30,7 @@ resource_local_to_scene = true
 extents = Vector2( 75.9373, 130.995 )
 
 [node name="prison1" instance=ExtResource( 1 )]
+sceneMusic = ExtResource( 7 )
 
 [node name="background" parent="." index="0"]
 texture = ExtResource( 2 )
@@ -122,6 +124,7 @@ position = Vector2( 671.627, 417.856 )
 image = ExtResource( 6 )
 itemType = "pickup"
 viewText = [ "I could pick my teeth with this.", "Or pick a lock.." ]
+sparkle = true
 
 [node name="story1" parent="." index="9" instance=ExtResource( 3 )]
 position = Vector2( -193.406, 0 )

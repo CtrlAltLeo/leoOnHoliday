@@ -1,12 +1,40 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://Images/Rooms/badlands2.png" type="Texture" id=1]
 [ext_resource path="res://Scenes/mainScene.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Scenes/item.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Images/People/spencerActor.png" type="Texture" id=4]
+[ext_resource path="res://Images/Portraits/spencerFace.png" type="Texture" id=5]
+[ext_resource path="res://Images/Items/mileMarker.png" type="Texture" id=6]
 
 [sub_resource type="NavigationPolygon" id=1]
 vertices = PoolVector2Array( 1140.48, 545.117, 225.102, 540.88, 571.547, 447.647, 745.299, 434.933, 995.332, 437.052, 1132, 433.874 )
 polygons = [ PoolIntArray( 0, 1, 2, 3, 4 ), PoolIntArray( 0, 4, 5 ) ]
 outlines = [ PoolVector2Array( 225.102, 540.88, 571.547, 447.647, 745.299, 434.933, 995.332, 437.052, 1132, 433.874, 1140.48, 545.117 ) ]
+
+[sub_resource type="RectangleShape2D" id=2]
+resource_local_to_scene = true
+extents = Vector2( 41.1608, 118.093 )
+
+[sub_resource type="RectangleShape2D" id=3]
+resource_local_to_scene = true
+extents = Vector2( 29.8053, 64.0165 )
+
+[sub_resource type="Animation" id=4]
+resource_name = "flicker"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("../AlphusWizard/Light2D:energy")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1, 2 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ 0.0, 3.0, 0.0 ]
+}
 
 [node name="badlands2" instance=ExtResource( 2 )]
 
@@ -18,3 +46,82 @@ polygon = PoolVector2Array( 124.037, 590.082, 459.887, 498.968, 664.364, 489.433
 
 [node name="NavigationPolygonInstance" parent="Navigation2D" index="0"]
 navpoly = SubResource( 1 )
+
+[node name="player" parent="." index="4"]
+position = Vector2( 810.334, 500.448 )
+
+[node name="spencer2" parent="." index="5" instance=ExtResource( 3 )]
+position = Vector2( 537.514, 406.785 )
+image = ExtResource( 4 )
+itemType = "NPC"
+viewText = [ "Spencer! ", "How's life been treating you? ", "Not bad, I'm not dead yet.", "That's nice. ", "Hey listen..", "(Navi reference?)", "I'd be careful up ahead. I just barely got past this weird group of people.", "Shady characters if you ask me.", "Just a heads up." ]
+npcFace = ExtResource( 5 )
+faceArray = [ 1, 2, 1, 2, 2, 2, 2, 2, 2 ]
+
+[node name="CollisionShape2D" parent="spencer2/Area2D" index="0"]
+position = Vector2( -6.35675, 5.29733 )
+shape = SubResource( 2 )
+
+[node name="Sprite" parent="spencer2" index="2"]
+texture = ExtResource( 4 )
+
+[node name="walkPos" parent="spencer2" index="3"]
+position = Vector2( -88.5669, 109.368 )
+
+[node name="signToCult" parent="." index="6" instance=ExtResource( 3 )]
+position = Vector2( 345.718, 470.312 )
+image = ExtResource( 6 )
+itemType = "door"
+doorUseText = "The stone marker has an arrow and a snake carved into it."
+
+[node name="CollisionShape2D" parent="signToCult/Area2D" index="0"]
+position = Vector2( -55.4373, 35.2102 )
+shape = SubResource( 3 )
+
+[node name="Sprite" parent="signToCult" index="2"]
+position = Vector2( -50.9424, 35.9594 )
+scale = Vector2( 0.525926, 0.525926 )
+texture = ExtResource( 6 )
+
+[node name="walkPos" parent="signToCult" index="3"]
+position = Vector2( 30.8452, 87.627 )
+
+[node name="Light2D" parent="signToCult" index="4"]
+position = Vector2( -201.522, -47.1967 )
+
+[node name="signToBadlandsOne" parent="." index="7" instance=ExtResource( 3 )]
+position = Vector2( 1023.77, 432.171 )
+image = ExtResource( 6 )
+itemType = "door"
+reactionText = {
+}
+doorExit = "res://Rooms/enterBadlands.tscn"
+doorUseText = "The marker points you toward the main beginning of the badlands."
+
+[node name="Area2D" parent="signToBadlandsOne" index="1"]
+position = Vector2( -0.667358, 0.667419 )
+
+[node name="CollisionShape2D" parent="signToBadlandsOne/Area2D" index="0"]
+position = Vector2( -55.4373, 35.2102 )
+shape = SubResource( 3 )
+
+[node name="Sprite" parent="signToBadlandsOne" index="2"]
+position = Vector2( -50.9424, 35.9594 )
+scale = Vector2( 0.525926, 0.525926 )
+texture = ExtResource( 6 )
+
+[node name="walkPos" parent="signToBadlandsOne" index="3"]
+position = Vector2( -118.722, 107.985 )
+
+[node name="Light2D" parent="signToBadlandsOne" index="4"]
+position = Vector2( -201.522, -47.1967 )
+
+[node name="AnimationPlayer" parent="signToBadlandsOne" index="5"]
+anims/flicker = SubResource( 4 )
+
+[node name="CPUParticles2D" parent="signToBadlandsOne" index="7"]
+position = Vector2( 78.0881, 51.3913 )
+
+[editable path="spencer2"]
+[editable path="signToCult"]
+[editable path="signToBadlandsOne"]

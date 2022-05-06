@@ -27,7 +27,7 @@ navpoly = SubResource( 1 )
 [node name="tunnelDoor" parent="." index="4" instance=ExtResource( 3 )]
 position = Vector2( -154.597, 24.9734 )
 itemType = "door"
-doorExit = "res://Rooms/caveEntrance.tscn"
+doorExit = "res://cutScenes/exitPrisonCutscene.tscn"
 doorUseText = "You walk through the open passage."
 
 [node name="Area2D" parent="tunnelDoor" index="1"]

@@ -6,6 +6,7 @@ export var location = ""
 
 
 func _ready():
+	
 	if Globals.fastTravels.has(Name):
 		return
 		

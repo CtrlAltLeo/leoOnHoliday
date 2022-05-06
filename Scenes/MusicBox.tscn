@@ -3,7 +3,7 @@
 [ext_resource path="res://Sounds/Dragón Rojo - The Mini Vandals.mp3" type="AudioStream" id=1]
 [ext_resource path="res://Code/MusicBox.gd" type="Script" id=2]
 
-[sub_resource type="Animation" id=2]
+[sub_resource type="Animation" id=1]
 resource_name = "startNewSong"
 length = 1.5
 tracks/0/type = "value"
@@ -19,8 +19,7 @@ tracks/0/keys = {
 "values": [ -40.0, 0.0 ]
 }
 
-[sub_resource type="Animation" id=1]
-resource_name = "switchSong2"
+[sub_resource type="Animation" id=2]
 length = 1.5
 tracks/0/type = "value"
 tracks/0/path = NodePath("AudioStreamPlayer:volume_db")
@@ -43,8 +42,8 @@ stream = ExtResource( 1 )
 autoplay = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-anims/startNewSong = SubResource( 2 )
-anims/switchSong = SubResource( 1 )
-anims/switchSong2 = SubResource( 1 )
+anims/startNewSong = SubResource( 1 )
+anims/switchSong = SubResource( 2 )
+anims/switchSong2 = SubResource( 2 )
 
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]

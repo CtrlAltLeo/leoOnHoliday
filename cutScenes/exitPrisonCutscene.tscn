@@ -1,0 +1,63 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://Scenes/cutScene.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Images/Rooms/caveEntrance.png" type="Texture" id=2]
+[ext_resource path="res://Images/leoAnimations/leoIdle3.png" type="Texture" id=3]
+[ext_resource path="res://soundFX/happy-monkey-circle.mp3" type="AudioStream" id=4]
+
+[sub_resource type="Animation" id=1]
+resource_name = "cutScene"
+length = 3.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("caveEntrance:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 2.27465, 2.26188 ), Vector2( 1.51443, 1.50593 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("caveEntrance/leoIdle3:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 94.3421, 3.6239 ), Vector2( 0.806534, 48.585 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("caveEntrance/leoIdle3:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0.430708, 0.433138 ), Vector2( 0.770804, 0.775154 ) ]
+}
+
+[node name="exitPrisonCutscene" instance=ExtResource( 1 )]
+targetArea = "res://Rooms/caveEntrance.tscn"
+cutsceneMusic = ExtResource( 4 )
+
+[node name="AnimationPlayer" parent="." index="0"]
+anims/cutScene = SubResource( 1 )
+
+[node name="caveEntrance" type="Sprite" parent="." index="1"]
+position = Vector2( 516.693, 322.207 )
+scale = Vector2( 1.51443, 1.50593 )
+texture = ExtResource( 2 )
+
+[node name="leoIdle3" type="Sprite" parent="caveEntrance" index="0"]
+position = Vector2( 0.806534, 48.585 )
+scale = Vector2( 0.770804, 0.775154 )
+texture = ExtResource( 3 )

@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/agh_uT05NZS.mp3-afa98197d51c8b9fe256e261c84c2fc5.mp3str"
+
+[deps]
+
+source_file="res://Memes/agh_uT05NZS.mp3"
+dest_files=[ "res://.import/agh_uT05NZS.mp3-afa98197d51c8b9fe256e261c84c2fc5.mp3str" ]
+
+[params]
+
+loop=false
+loop_offset=0

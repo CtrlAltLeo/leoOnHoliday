@@ -85,8 +85,8 @@ position = Vector2( -50.9424, -51.6916 )
 position = Vector2( 626.494, 530.893 )
 
 [node name="fastTravel" parent="." index="7" instance=ExtResource( 6 )]
-Name = "res://Rooms/courtYard.tscn"
-location = "Courtyard"
+Name = "Courtyard"
+location = "res://Rooms/courtYard.tscn"
 
 [editable path="signToCity"]
 [editable path="guardToCastle"]

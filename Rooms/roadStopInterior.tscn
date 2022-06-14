@@ -8,7 +8,7 @@
 [ext_resource path="res://Images/People/bartender.png" type="Texture" id=6]
 [ext_resource path="res://Images/Portraits/sittingGuy.png" type="Texture" id=7]
 [ext_resource path="res://Images/People/barPatron.png" type="Texture" id=8]
-[ext_resource path="res://Images/Items/french.png" type="Texture" id=9]
+[ext_resource path="res://Images/Items/paddle.png" type="Texture" id=9]
 [ext_resource path="res://Images/image-removebg-preview (3).png" type="Texture" id=10]
 [ext_resource path="res://Images/Items/chocolateMilk.png" type="Texture" id=11]
 [ext_resource path="res://Sounds/By the Fireplace - TrackTribe.mp3" type="AudioStream" id=12]
@@ -62,9 +62,6 @@ polygon = PoolVector2Array( 11.0002, 391.455, 91.8174, 379.108, 85.0827, 343.189
 [node name="NavigationPolygonInstance" parent="Navigation2D" index="0"]
 navpoly = SubResource( 1 )
 
-[node name="player" parent="." index="3"]
-position = Vector2( 153.07, 525.848 )
-
 [node name="barTop" parent="." index="4" instance=ExtResource( 3 )]
 itemType = "view"
 viewText = [ "Give me a drink, bartender.", "*WOOOSH*" ]
@@ -100,7 +97,10 @@ image = ExtResource( 6 )
 itemType = "NPC"
 viewText = [ "Welcome to the Purple Marker, what can I get you?", "Yes, I'll have a glass of chocolate milk please.", "...", "Excuse me? ", "Is there a problem? ", "...", "Of course not! ", "One chocolate milk, coming right up.", "That'll just be a gold piece. ", "I appear to be poor. Good day." ]
 reactionText = {
-"coin": [ "You give the bartender a coin, and he pours you a glass of chocolate milk.", "This is a Core Item. You cannot win the game without this.", "...", "Not really." ]
+"banjo": [ "You start to play the banjo for the barkeeper.", "You're so dangerous.." ],
+"beerStein": [ "The barkeeper is kind of surprised by the beer stein.", "He says that they don't have any as fancy as this one.", "He advises you check with people in the city about it." ],
+"coin": [ "You give the bartender a coin, and he pours you a glass of chocolate milk.", "This is a Core Item. You cannot win the game without this.", "...", "Not really." ],
+"woodenClub": [ "You decide to beat the man to death.", "No you don't! ", "What kind of game do you think this is?" ]
 }
 powerSignals = [ "coin" ]
 npcFace = ExtResource( 5 )
@@ -124,7 +124,9 @@ image = ExtResource( 8 )
 itemType = "NPC"
 viewText = [ "Excuse me sir, I-", "WHAZZAT?", "WHOOHA...Yeah I like a good PARTAY as much as the next guy,", "and the sparkling water flows freely..", "Say, I'm all out of coins. ", "You look like a nice fella, want to be my new drinking buddy?", "Shhh Shhh, no words now, get me money for sparkling water!", "Or play me some music, that usually wakes me up." ]
 reactionText = {
-"banjo": [ "You play the banjo for the man.", "You've never played the banjo before, but he seems to enjoy it.", "He hands you a small piece of bread and warns you to watch out for Shredder." ]
+"banjo": [ "You play the banjo for the man.", "You've never played the banjo before, but he seems to enjoy it.", "You don't know where he got this oar, but it's yours now." ],
+"beerStein": [ "More strong drink is the opposite of what this guy needs.", "Or is that the other way around?" ],
+"woodenClub": [ "A good whack will sober up anyone.", "Except this guy.", "Yikes!" ]
 }
 powerSignals = [ "banjo" ]
 npcFace = ExtResource( 7 )
@@ -143,15 +145,15 @@ position = Vector2( 89.6083, 57.1552 )
 [node name="Light2D" parent="drunkPatron" index="4"]
 position = Vector2( -11.9692, 1.25995 )
 
-[node name="frenchBread" parent="." index="8" instance=ExtResource( 3 )]
+[node name="woodenOar" parent="." index="8" instance=ExtResource( 3 )]
 position = Vector2( -238.379, 280.758 )
 image = ExtResource( 9 )
 itemType = "pickup"
 
-[node name="CollisionShape2D" parent="frenchBread/Area2D" index="0"]
+[node name="CollisionShape2D" parent="woodenOar/Area2D" index="0"]
 shape = SubResource( 6 )
 
-[node name="Sprite" parent="frenchBread" index="2"]
+[node name="Sprite" parent="woodenOar" index="2"]
 texture = ExtResource( 9 )
 
 [node name="doorToOutside" parent="." index="9" instance=ExtResource( 3 )]
@@ -197,14 +199,17 @@ shape = SubResource( 9 )
 [node name="Sprite" parent="chocolateMilk" index="2"]
 texture = ExtResource( 11 )
 
+[node name="player" parent="." index="12"]
+position = Vector2( 153.07, 525.848 )
+
 [connection signal="powerSignal" from="barKeeper" to="chocolateMilk" method="pickup"]
-[connection signal="powerSignal" from="drunkPatron" to="frenchBread" method="pickup"]
+[connection signal="powerSignal" from="drunkPatron" to="woodenOar" method="pickup"]
 
 [editable path="barTop"]
 [editable path="beerStein"]
 [editable path="barKeeper"]
 [editable path="drunkPatron"]
-[editable path="frenchBread"]
+[editable path="woodenOar"]
 [editable path="doorToOutside"]
 [editable path="portalToNoah"]
 [editable path="chocolateMilk"]

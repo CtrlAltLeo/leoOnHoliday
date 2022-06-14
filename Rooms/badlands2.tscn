@@ -54,9 +54,9 @@ position = Vector2( 810.334, 500.448 )
 position = Vector2( 537.514, 406.785 )
 image = ExtResource( 4 )
 itemType = "NPC"
-viewText = [ "Spencer! ", "How's life been treating you? ", "Not bad, I'm not dead yet.", "That's nice. ", "Hey listen..", "(Navi reference?)", "I'd be careful up ahead. I just barely got past this weird group of people.", "Shady characters if you ask me.", "Just a heads up." ]
+viewText = [ "Ahoy!", "Ahoy?", "We're in a desert.", "I.", "Oh.", "What's up?", "Two words:", "Big.", "Snake." ]
 npcFace = ExtResource( 5 )
-faceArray = [ 1, 2, 1, 2, 2, 2, 2, 2, 2 ]
+faceArray = [ 1, 2, 2, 1, 1, 1, 2, 2, 2 ]
 
 [node name="CollisionShape2D" parent="spencer2/Area2D" index="0"]
 position = Vector2( -6.35675, 5.29733 )
@@ -72,6 +72,7 @@ position = Vector2( -88.5669, 109.368 )
 position = Vector2( 345.718, 470.312 )
 image = ExtResource( 6 )
 itemType = "door"
+doorExit = "res://Rooms/badlands3.tscn"
 doorUseText = "The stone marker has an arrow and a snake carved into it."
 
 [node name="CollisionShape2D" parent="signToCult/Area2D" index="0"]

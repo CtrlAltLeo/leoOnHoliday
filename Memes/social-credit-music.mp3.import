@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/social-credit-music.mp3-90befa46ea4b39e207e752e80e771c95.mp3str"
+
+[deps]
+
+source_file="res://Memes/social-credit-music.mp3"
+dest_files=[ "res://.import/social-credit-music.mp3-90befa46ea4b39e207e752e80e771c95.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

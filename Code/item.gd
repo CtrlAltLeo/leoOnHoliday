@@ -35,6 +35,8 @@ export var sparkle = false
 signal powerSignal
 signal activateSignal
 signal doorUnlock
+signal onPickup
+signal sendName(n)
 
 func _ready():
 	
@@ -52,7 +54,7 @@ func _ready():
 	
 	#Creates item ID in game
 	if !Globals.items.has(id_name):
-		Globals.items[id_name] = {"image":image.load_path, "type":itemType, "remove":false, "doorLocked":doorLocked}
+		Globals.items[id_name] = {"image":image.load_path, "type":itemType, "remove":false, "doorLocked":doorLocked,"showSelf":false}
 	
 	#prepares item image on load.
 	if itemType == "inventory":
@@ -75,6 +77,9 @@ func _ready():
 	#if item globally removed, remove again
 	if Globals.items[id_name]["remove"] and itemType != "inventory":
 		queue_free()
+		
+	if Globals.items[id_name]["showSelf"] == true:
+		self.show()
 		
 	
 	#Keeps global door state
@@ -166,7 +171,8 @@ func door():
 
 func activate():
 	Globals.disconnect("playerDoneWalking" ,self, "activate")
-	emit_signal("activateSignal")
+
+	emit_signal("sendName", self.id_name)
 	
 	if itemType == "door":
 		door()
@@ -185,6 +191,7 @@ func activate():
 		
 		if Globals.activeItem != "":
 			use()
+			return
 		
 		else:	
 			Globals.addDioBox(viewText, npcFace.load_path, faceArray)
@@ -205,7 +212,7 @@ func activate():
 	if itemType == "youtube":
 		OS.shell_open("https://www.youtube.com/channel/UCp9Ma9QCchFfEmokJILwXEw")
 		
-	
+	emit_signal("activateSignal") # Moved this to bottom from top to fix Dio Skips.
 
 	
 func unlockDoor():
@@ -225,6 +232,7 @@ func useDoor():
 func pickup():
 	
 	Globals.addItem(id_name)
+	emit_signal("onPickup")
 	remove()
 	
 
@@ -242,7 +250,8 @@ func hideItem():
 	
 func showItem():
 	self.show()
-	Globals.items[self.id_name]["remove"] = false
+	Globals.items[self.id_name]["showSelf"] = true
+	
 	
 func resetPosition():
 	self.position = startPosition

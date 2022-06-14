@@ -100,6 +100,10 @@ position = Vector2( 519.377, 328.675 )
 image = ExtResource( 5 )
 itemType = "useable"
 viewText = [ "A huge capybara blocks your path!", "It's not the worst thing that could block your path..", "But it's still inconvenient.", "How do you get these guys to move, anyway?", "Why would you want to? They're so cute!" ]
+reactionText = {
+"stick": [ "You read somewhere that these guys love eating sticks.", "By some stroke of luck, dumb or otherwise, your info turned out to be correct!", "The big guy gets up, and clears the way for you." ]
+}
+powerSignals = [ "stick" ]
 
 [node name="CollisionShape2D" parent="capybara/Area2D" index="0"]
 shape = SubResource( 5 )

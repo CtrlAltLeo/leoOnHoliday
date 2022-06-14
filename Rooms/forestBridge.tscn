@@ -1,0 +1,115 @@
+[gd_scene load_steps=12 format=2]
+
+[ext_resource path="res://Images/Rooms/forestStream.png" type="Texture" id=1]
+[ext_resource path="res://Scenes/mainScene.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Images/Items/sign.png" type="Texture" id=3]
+[ext_resource path="res://Scenes/item.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Images/Portraits/leoNPCFace.png" type="Texture" id=6]
+[ext_resource path="res://Images/People/leoNPC.png" type="Texture" id=7]
+
+[sub_resource type="NavigationPolygon" id=1]
+vertices = PoolVector2Array( 961.908, 250.133, 987.335, 297.809, 735.183, 280.857, 739.421, 228.944, 890.924, 536.188, 371.787, 554.199, 338.944, 487.453, 606.988, 483.215, 795.572, 490.631, 497.863, 289.333, 401.452, 248.014, 433.236, 203.517, 554.015, 219.408, 632.415, 277.679, 476.674, 152.662, 478.793, 90.154, 636.653, 82.7378, 652.545, 174.911, 866.556, 486.393 )
+polygons = [ PoolIntArray( 0, 1, 2, 3 ), PoolIntArray( 4, 5, 6, 7, 8 ), PoolIntArray( 9, 10, 11, 12, 13 ), PoolIntArray( 12, 14, 15, 16, 17, 13 ), PoolIntArray( 13, 17, 3, 2, 7 ), PoolIntArray( 7, 2, 8 ), PoolIntArray( 4, 8, 18 ) ]
+outlines = [ PoolVector2Array( 338.944, 487.453, 606.988, 483.215, 632.415, 277.679, 497.863, 289.333, 401.452, 248.014, 433.236, 203.517, 554.015, 219.408, 476.674, 152.662, 478.793, 90.154, 636.653, 82.7378, 652.545, 174.911, 739.421, 228.944, 961.908, 250.133, 987.335, 297.809, 735.183, 280.857, 795.572, 490.631, 866.556, 486.393, 890.924, 536.188, 371.787, 554.199 ) ]
+
+[sub_resource type="RectangleShape2D" id=2]
+resource_local_to_scene = true
+extents = Vector2( 53.7928, 112.592 )
+
+[sub_resource type="RectangleShape2D" id=3]
+resource_local_to_scene = true
+extents = Vector2( 42.5588, 68.0686 )
+
+[sub_resource type="Animation" id=4]
+length = 2.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("../AlphusWizard/Light2D:energy")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1, 2 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ 0.0, 3.0, 0.0 ]
+}
+
+[sub_resource type="RectangleShape2D" id=5]
+resource_local_to_scene = true
+extents = Vector2( 30.7097, 98.56 )
+
+[node name="forestBridge" instance=ExtResource( 2 )]
+
+[node name="background" parent="." index="0"]
+texture = ExtResource( 1 )
+
+[node name="CollisionPolygon2D" parent="walkableArea" index="0"]
+polygon = PoolVector2Array( 318.398, 254.838, 421.166, 266.492, 366.074, 210.34, 361.836, 146.772, 518.637, 137.237, 539.826, 227.292, 617.167, 273.908, 861.903, 300.394, 875.676, 341.714, 629.88, 339.595, 675.437, 534.536, 762.313, 543.011, 777.146, 586.449, 669.081, 602.341, 280.258, 602.341, 237.879, 533.476, 480.496, 534.536, 512.28, 349.13, 380.907, 356.546, 284.495, 297.216 )
+
+[node name="NavigationPolygonInstance" parent="Navigation2D" index="0"]
+navpoly = SubResource( 1 )
+
+[node name="player" parent="." index="4"]
+position = Vector2( 417.807, 531.679 )
+
+[node name="singToBad4" parent="." index="5" instance=ExtResource( 4 )]
+position = Vector2( 315.871, 461.126 )
+image = ExtResource( 3 )
+itemType = "door"
+doorExit = "res://Rooms/badlands4.tscn"
+doorUseText = "You retrace your steps to the badlands.."
+
+[node name="CollisionShape2D" parent="singToBad4/Area2D" index="0"]
+position = Vector2( -4.16223, 7.13525 )
+shape = SubResource( 2 )
+
+[node name="Sprite" parent="singToBad4" index="2"]
+texture = ExtResource( 3 )
+
+[node name="singToBad5" parent="." index="6" instance=ExtResource( 4 )]
+position = Vector2( 494.603, 77.9333 )
+image = ExtResource( 3 )
+itemType = "door"
+reactionText = {
+}
+doorExit = "res://Rooms/wizardTower.tscn"
+doorUseText = "You retrace your steps to the badlands.."
+
+[node name="CollisionShape2D" parent="singToBad5/Area2D" index="0"]
+position = Vector2( -18.1622, 61.1353 )
+shape = SubResource( 3 )
+
+[node name="Sprite" parent="singToBad5" index="2"]
+position = Vector2( -13.3484, 60.0678 )
+scale = Vector2( 0.535935, 0.535935 )
+texture = ExtResource( 3 )
+
+[node name="Light2D" parent="singToBad5" index="4"]
+position = Vector2( 101, -3 )
+
+[node name="AnimationPlayer" parent="singToBad5" index="5"]
+anims/flicker = SubResource( 4 )
+
+[node name="leoWarning" parent="." index="7" instance=ExtResource( 4 )]
+position = Vector2( 577.243, 317.324 )
+image = ExtResource( 7 )
+itemType = "NPC"
+viewText = [ "Hello...Leo..", "..Hi..?", "You've come a long way, a very long way..", "I certainly have. ", "Do I know you? ", "Perhaps. ", "I know you very well.", "I'm getting weirded out..", "I expected as much. I've finally broken through the boundries of 1 and 0 to reach you.", "The path behind me leads to the climax of your great journey.", "Of, OUR, great journey.", "You will need to rely on your wits and other funny abilites to get through this final trial.", "Then, you can return home.", "You will need all the Mysical Objects. I'm sure you recognise them, they are not of this world.", "Only with those objects can you escape back to your reality. ", "I wish you the best of luck.", "We'll need it." ]
+npcFace = ExtResource( 6 )
+faceArray = [ 2, 1, 2, 1, 1, 2, 2, 1, 2, 2, 2, 2, 2, 2, 2, 2, 1 ]
+sparkle = true
+
+[node name="CollisionShape2D" parent="leoWarning/Area2D" index="0"]
+position = Vector2( 11.9692, 15.749 )
+shape = SubResource( 5 )
+
+[node name="Sprite" parent="leoWarning" index="2"]
+texture = ExtResource( 7 )
+
+[node name="walkPos" parent="leoWarning" index="3"]
+position = Vector2( -4.88579, 161.099 )
+
+[editable path="singToBad4"]
+[editable path="singToBad5"]
+[editable path="leoWarning"]

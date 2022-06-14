@@ -43,7 +43,7 @@ __meta__ = {
 }
 
 [node name="places" type="Node2D" parent="Sprite"]
-position = Vector2( -353.733, -147.439 )
+position = Vector2( -513.204, -442.65 )
 
 [node name="openMap" type="TextureButton" parent="."]
 margin_left = 1.68179
@@ -54,6 +54,9 @@ texture_normal = ExtResource( 5 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="point" type="Node2D" parent="."]
+position = Vector2( 212.8, 226.111 )
 
 [connection signal="pressed" from="Sprite/closeMap" to="." method="_on_closeMap_pressed"]
 [connection signal="pressed" from="openMap" to="." method="_on_openMap_pressed"]

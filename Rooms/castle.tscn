@@ -88,7 +88,7 @@ texture = ExtResource( 7 )
 visible = false
 position = Vector2( 344.514, 381.325 )
 image = ExtResource( 4 )
-itemType = "view"
+itemType = "NPC"
 viewText = [ "GAHHHHHH", "You!", "You saved me!", "You have done the kingdom and myself a great service.", "...", "You look like you are from a strange land.", "Ah!", "I have a strange gift for you! ", "Please take this grey box as a token of my thanks.", "Sweet!" ]
 npcFace = ExtResource( 6 )
 faceArray = [ 2, 2, 2, 2, 2, 2, 2, 2, 2, 1 ]
@@ -108,7 +108,10 @@ image = ExtResource( 4 )
 itemType = "useable"
 viewText = [ "The king is fast asleep, and covered in green vines.", "It would be funny if it weren't so sad." ]
 reactionText = {
-"treeChunk": [ "You tap the blessed stick on the King, and..", "The spell begins to break!", "The vines melt away, and the king wakes up!" ]
+"powerGlove": [ "That's how you know you're screwed.", "A weapon of infinite power doesn't even work." ],
+"saltPile": [ "Fam.", "Let's listen to the wizard, ya?" ],
+"treeChunk": [ "You tap the blessed stick on the King, and..", "The spell begins to break!", "The vines melt away, and the king wakes up!" ],
+"woodenOar": [ "You dumb noodle!", "That only works in Paris!" ]
 }
 powerSignals = [ "treeChunk" ]
 
@@ -204,11 +207,11 @@ itemType = "pickup"
 [connection signal="activateSignal" from="regularKing" to="nes" method="pickup"]
 [connection signal="powerSignal" from="corruptKing" to="corruptKing" method="hideItem"]
 [connection signal="powerSignal" from="corruptKing" to="regularKing" method="showItem"]
-[connection signal="activateSignal" from="courtWizard" to="steelHelmet" method="pickup"]
-[connection signal="activateSignal" from="courtWizard" to="sickle" method="pickup"]
-[connection signal="activateSignal" from="courtWizard" to="courtWizard2" method="showItem"]
-[connection signal="activateSignal" from="courtWizard" to="courtWizard" method="hideItem"]
 [connection signal="activateSignal" from="courtWizard" to="guardToCourtyard" method="unlockDoor"]
+[connection signal="activateSignal" from="courtWizard" to="courtWizard" method="hideItem"]
+[connection signal="activateSignal" from="courtWizard" to="courtWizard2" method="showItem"]
+[connection signal="activateSignal" from="courtWizard" to="sickle" method="pickup"]
+[connection signal="activateSignal" from="courtWizard" to="steelHelmet" method="pickup"]
 
 [editable path="guardToCourtyard"]
 [editable path="regularKing"]

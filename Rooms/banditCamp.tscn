@@ -1,0 +1,118 @@
+[gd_scene load_steps=13 format=2]
+
+[ext_resource path="res://Images/Rooms/banditCampExterior.png" type="Texture" id=1]
+[ext_resource path="res://Scenes/mainScene.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Scenes/item.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Images/Items/mushRoom.png" type="Texture" id=4]
+[ext_resource path="res://Images/People/robber.png" type="Texture" id=5]
+[ext_resource path="res://Images/Portraits/robberFace.png" type="Texture" id=6]
+[ext_resource path="res://Images/Items/antiCeilingPaste.png" type="Texture" id=7]
+
+[sub_resource type="NavigationPolygon" id=1]
+vertices = PoolVector2Array( 669.706, 362.583, 580.038, 343.705, 555.497, 333.323, 693.303, 329.547, 740.497, 344.649, 832.996, 454.139, 797.129, 389.955, 1123.71, 428.654, 1135.04, 543.807, 110.933, 546.638, 114.708, 405.057, 757.486, 487.174, 634.783, 450.363, 688.584, 439.98, 526.237, 411.664 )
+polygons = [ PoolIntArray( 0, 1, 2, 3, 4 ), PoolIntArray( 5, 6, 7, 8 ), PoolIntArray( 8, 9, 10, 11 ), PoolIntArray( 11, 0, 4, 5 ), PoolIntArray( 12, 13, 11 ), PoolIntArray( 11, 5, 8 ), PoolIntArray( 12, 11, 10 ), PoolIntArray( 12, 10, 14 ) ]
+outlines = [ PoolVector2Array( 114.708, 405.057, 526.237, 411.664, 634.783, 450.363, 688.584, 439.98, 757.486, 487.174, 669.706, 362.583, 580.038, 343.705, 555.497, 333.323, 693.303, 329.547, 740.497, 344.649, 832.996, 454.139, 797.129, 389.955, 1123.71, 428.654, 1135.04, 543.807, 110.933, 546.638 ) ]
+
+[sub_resource type="RectangleShape2D" id=2]
+resource_local_to_scene = true
+extents = Vector2( 34.8337, 104.382 )
+
+[sub_resource type="RectangleShape2D" id=3]
+resource_local_to_scene = true
+extents = Vector2( 33.7621, 32.7478 )
+
+[sub_resource type="RectangleShape2D" id=4]
+resource_local_to_scene = true
+extents = Vector2( 57.17, 129.929 )
+
+[sub_resource type="RectangleShape2D" id=5]
+resource_local_to_scene = true
+extents = Vector2( 33.7621, 32.7478 )
+
+[node name="banditCamp" instance=ExtResource( 2 )]
+
+[node name="background" parent="." index="0"]
+position = Vector2( 512.131, 300.523 )
+texture = ExtResource( 1 )
+
+[node name="CollisionPolygon2D" parent="walkableArea" index="0"]
+polygon = PoolVector2Array( 13.5468, 464.276, 5.05196, 591.699, 1005.56, 598.306, 1010.28, 484.097, 689.361, 441.623, 738.442, 523.74, 622.346, 402.924, 577.04, 376.496, 451.505, 387.822, 562.882, 417.082, 649.718, 537.898, 574.208, 491.648, 539.285, 503.919, 420.357, 464.276 )
+
+[node name="NavigationPolygonInstance" parent="Navigation2D" index="0"]
+position = Vector2( -112.284, 53.377 )
+navpoly = SubResource( 1 )
+
+[node name="player" parent="." index="4"]
+position = Vector2( 202.027, 516.152 )
+
+[node name="doorToBad4" parent="." index="5" instance=ExtResource( 3 )]
+position = Vector2( 74.92, 528.008 )
+itemType = "door"
+doorExit = "res://Rooms/badlands4.tscn"
+doorUseText = "You return to the Badder Lands."
+
+[node name="banditHouse" parent="." index="6" instance=ExtResource( 3 )]
+position = Vector2( -202.165, 108.218 )
+itemType = "view"
+viewText = [ "My man.", "You cannot just walk into a bandit's house uninvited." ]
+
+[node name="Area2D" parent="banditHouse" index="1"]
+position = Vector2( 706.389, 128.434 )
+
+[node name="CollisionShape2D" parent="banditHouse/Area2D" index="0"]
+position = Vector2( -13.7692, 38.711 )
+shape = SubResource( 2 )
+
+[node name="walkPos" parent="banditHouse" index="3"]
+position = Vector2( 791.857, 297.01 )
+
+[node name="mushroom" parent="." index="7" instance=ExtResource( 3 )]
+position = Vector2( 478.461, 518.47 )
+image = ExtResource( 4 )
+itemType = "pickup"
+viewText = [ "Check this out! A mushroom!", "It looks very nice and shroomy.", "You decide to call it Felix." ]
+
+[node name="CollisionShape2D" parent="mushroom/Area2D" index="0"]
+shape = SubResource( 3 )
+
+[node name="Sprite" parent="mushroom" index="2"]
+texture = ExtResource( 4 )
+
+[node name="banditCousin" parent="." index="8" instance=ExtResource( 3 )]
+position = Vector2( 796.852, 423.353 )
+image = ExtResource( 5 )
+itemType = "NPC"
+viewText = [ "Hey! I know you! ", "You got past my Cousin's road!", "He was the most hardened crazy criminal I've ever met, and here you are..", "I'm Low-Key nervous fr fr ", "Are you going to hurt me or something?", "Oh shoot, or worse..", "Make me pay taxes on my house??", "Uh, no, I'm just passing through.", "OH GRAVY", "YOU'RE A GHOST!!", "Not a ghost, either, my guy.", "Phew!", "Double Phew! ", "Say, do you do funny quests n stuff?", "I guess. ", "What do you need?", "There is a blue dot on a tree somewhere.", "Ok?", "I want it." ]
+reactionText = {
+"blueDot": [ "Through some Magic, you give the blue dot to the bandit.", "He seems disgusted.", "He puts it in his pocket.", "He does give you some anti-ceiling stuck glue, though." ]
+}
+powerSignals = [ "blueDot" ]
+npcFace = ExtResource( 6 )
+faceArray = [ 2, 2, 2, 2, 2, 2, 2, 1, 2, 2, 1, 2, 2, 2, 1, 1, 2, 1, 2 ]
+
+[node name="CollisionShape2D" parent="banditCousin/Area2D" index="0"]
+position = Vector2( 10.9316, 4.2045 )
+shape = SubResource( 4 )
+
+[node name="Sprite" parent="banditCousin" index="2"]
+texture = ExtResource( 5 )
+
+[node name="walkPos" parent="banditCousin" index="3"]
+position = Vector2( -189.47, 143.967 )
+
+[node name="ceilingPaste" parent="." index="9" instance=ExtResource( 3 )]
+position = Vector2( -124.88, 372.499 )
+image = ExtResource( 7 )
+
+[node name="CollisionShape2D" parent="ceilingPaste/Area2D" index="0"]
+shape = SubResource( 5 )
+
+[node name="Sprite" parent="ceilingPaste" index="2"]
+texture = ExtResource( 7 )
+
+[connection signal="powerSignal" from="banditCousin" to="ceilingPaste" method="pickup"]
+
+[editable path="banditHouse"]
+[editable path="mushroom"]
+[editable path="banditCousin"]
+[editable path="ceilingPaste"]

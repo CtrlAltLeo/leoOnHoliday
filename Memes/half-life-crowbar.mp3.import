@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/half-life-crowbar.mp3-f0baf110a81cdb5095e1fb1373c15465.mp3str"
+
+[deps]
+
+source_file="res://Memes/half-life-crowbar.mp3"
+dest_files=[ "res://.import/half-life-crowbar.mp3-f0baf110a81cdb5095e1fb1373c15465.mp3str" ]
+
+[params]
+
+loop=false
+loop_offset=0

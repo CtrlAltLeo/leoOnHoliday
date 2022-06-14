@@ -66,7 +66,7 @@ itemType = "NPC"
 viewText = [ "Hello Friend. This is the Purple Marker Tavern.", "What a weird name! Any reason why?", "No.", "...", "...", "...", "...", "...", "I won't let you in unless you give me a rat.", "..." ]
 reactionText = {
 "banjo": [ "No!" ],
-"rat": [ "A fine specimen, very clever. I will enjoy having this.", "He will sit upon my mantel and tell me jokes about things.", "Oh, go on inside." ],
+"rat": [ "The man is overjoyed.", "He puts the rat into a little bag (with it's head peeking out, duh), and opens the door.", "You've done a good deed. You hope." ],
 "woodenClub": [ "Using the wooden club, you beat the man unconscious.", "Ending and Door Unlocked: True Evil." ]
 }
 powerSignals = [ "rat", "woodenClub" ]

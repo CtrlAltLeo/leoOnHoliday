@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=2]
+[gd_scene load_steps=17 format=2]
 
 [ext_resource path="res://Images/Rooms/badlands1.png" type="Texture" id=1]
 [ext_resource path="res://Scenes/mainScene.tscn" type="PackedScene" id=2]
@@ -8,6 +8,7 @@
 [ext_resource path="res://Sounds/Yah Ribon - E's Jammy Jams.mp3" type="AudioStream" id=6]
 [ext_resource path="res://Images/Items/woodenSign.png" type="Texture" id=7]
 [ext_resource path="res://Images/Items/snakeCoin.png" type="Texture" id=8]
+[ext_resource path="res://Scenes/fastTravel.tscn" type="PackedScene" id=9]
 
 [sub_resource type="NavigationPolygon" id=1]
 vertices = PoolVector2Array( 578.729, 379.618, 543.053, 322.537, 659.595, 309.455, 766.624, 315.401, 1132.9, 547.297, 1131.71, 292.806, 110.182, 538.972, 120.884, 347.51, 456.241, 381.997 )
@@ -42,7 +43,7 @@ tracks/0/keys = {
 "values": [ 0.0, 3.0, 0.0 ]
 }
 
-[sub_resource type="Animation" id=7]
+[sub_resource type="Animation" id=6]
 resource_name = "flicker"
 length = 2.0
 tracks/0/type = "value"
@@ -58,7 +59,7 @@ tracks/0/keys = {
 "values": [ 0.0, 3.0, 0.0 ]
 }
 
-[sub_resource type="RectangleShape2D" id=6]
+[sub_resource type="RectangleShape2D" id=7]
 resource_local_to_scene = true
 extents = Vector2( 33.7621, 32.7478 )
 
@@ -121,6 +122,7 @@ texture = ExtResource( 7 )
 position = Vector2( -80.0469, 102.875 )
 
 [node name="signToBadlands2" parent="." index="8" instance=ExtResource( 3 )]
+modulate = Color( 0.603922, 0.894118, 0.0313726, 1 )
 position = Vector2( 113.912, 376.786 )
 image = ExtResource( 7 )
 itemType = "door"
@@ -145,12 +147,13 @@ position = Vector2( -80.0469, 102.875 )
 anims/flicker = SubResource( 5 )
 
 [node name="signBadlands3" parent="." index="9" instance=ExtResource( 3 )]
+modulate = Color( 0.603922, 0.894118, 0.0313726, 1 )
 position = Vector2( 719.062, 286.722 )
 image = ExtResource( 7 )
 itemType = "door"
 reactionText = {
 }
-doorExit = "res://Rooms/badlands2.tscn"
+doorExit = "res://Rooms/badlands4.tscn"
 doorUseText = "You take the road less traveled into the badlands."
 
 [node name="CollisionShape2D" parent="signBadlands3/Area2D" index="0"]
@@ -166,7 +169,7 @@ texture = ExtResource( 7 )
 position = Vector2( -80.0469, 102.875 )
 
 [node name="AnimationPlayer" parent="signBadlands3" index="5"]
-anims/flicker = SubResource( 7 )
+anims/flicker = SubResource( 6 )
 
 [node name="snakeCoin" parent="." index="10" instance=ExtResource( 3 )]
 position = Vector2( 218.472, 523.28 )
@@ -177,10 +180,14 @@ itemType = "pickup"
 viewText = [ "You find a small coin with a snake on it.", "A shiver runs down your spine as you put it into your pocket." ]
 
 [node name="CollisionShape2D" parent="snakeCoin/Area2D" index="0"]
-shape = SubResource( 6 )
+shape = SubResource( 7 )
 
 [node name="Sprite" parent="snakeCoin" index="2"]
 texture = ExtResource( 8 )
+
+[node name="fastTravel" parent="." index="11" instance=ExtResource( 9 )]
+Name = "Badlands"
+location = "res://Rooms/enterBadlands.tscn"
 
 [editable path="badlandsStory1"]
 [editable path="nomad1"]

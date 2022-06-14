@@ -2,9 +2,16 @@ extends Node2D
 
 export(AudioStream) var sceneMusic
 
+export var canFastTravel = true
+
 var canWalk = false
 
 func _ready():
+	
+	if canFastTravel:
+		WorldMap.unlock()
+	else:
+		WorldMap.lock()
 	
 	$zoneNameDebug.text = self.name
 	

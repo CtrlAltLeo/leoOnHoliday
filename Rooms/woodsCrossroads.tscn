@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://Scenes/mainScene.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Images/Rooms/woods1.png" type="Texture" id=2]
@@ -7,6 +7,7 @@
 [ext_resource path="res://Images/Items/woodenSign.png" type="Texture" id=5]
 [ext_resource path="res://Images/People/todd.png" type="Texture" id=6]
 [ext_resource path="res://Images/Portraits/toddFace.png" type="Texture" id=7]
+[ext_resource path="res://Scenes/fastTravel.tscn" type="PackedScene" id=8]
 
 [sub_resource type="NavigationPolygon" id=1]
 vertices = PoolVector2Array( 1139.6, 551.283, 101.325, 543.867, 134.168, 353.164, 304.742, 336.212, 376.785, 295.953, 578.083, 315.023, 746.538, 338.331, 887.447, 304.428, 1142.78, 318.201 )
@@ -114,11 +115,12 @@ texture = ExtResource( 5 )
 anims/flicker = SubResource( 5 )
 
 [node name="todd" parent="." index="8" instance=ExtResource( 3 )]
-position = Vector2( 666.402, 310.423 )
+position = Vector2( 668.184, 310.423 )
 image = ExtResource( 6 )
 itemType = "NPC"
 viewText = [ "Greetings, Knave!", "You stand terribly near Mushroom Manor, and by your lack of fungus I see you are not shroomkin.", "By what token do you wish to pass?", "Uh, the token of friendship to mushrooms and goodwill?", "LIAR!!", "YOU PICK THE MUSHROOMS OFF YOUR PIZZA!!", "How's that for a callout..", "Prove to me you care for mushroom kind, and I will let you pass.", "...", "And eat the mushroom pizza. What are you, 5?" ]
 reactionText = {
+"ceilingPaste": [ "You try to give Todd the Anti Ceiling Paste.", "No way!", "He's not interested!" ],
 "mushroom": [ "You give the mushroom man the small mushroom.", "He cradles it in his arms and calls it Felix.", "You think you're free to go." ],
 "quarter": [ "What would a fungi do with money?" ],
 "sickle": [ "I'm not going to let you kill Todd.", "He's based off of an old friend.." ],
@@ -138,6 +140,10 @@ texture = ExtResource( 6 )
 
 [node name="walkPos" parent="todd" index="3"]
 position = Vector2( 108.543, 139.273 )
+
+[node name="fastTravel" parent="." index="9" instance=ExtResource( 8 )]
+Name = "Woods Crossroads"
+location = "res://Rooms/woodsCrossroads.tscn"
 
 [connection signal="powerSignal" from="todd" to="pillarToGrove" method="unlockDoor"]
 [connection signal="powerSignal" from="todd" to="signToWitchHut" method="unlockDoor"]

@@ -11,9 +11,9 @@
 [ext_resource path="res://Images/People/villigerMan2.png" type="Texture" id=9]
 
 [sub_resource type="NavigationPolygon" id=1]
-vertices = PoolVector2Array( 1111.93, 556.175, 108.242, 543.094, 258.082, 449.146, 655.277, 456.282, 677.872, 437.254, 695.71, 282.657, 966.715, 144.147, 1127.39, 538.337, 656.467, 314.766 )
-polygons = [ PoolIntArray( 0, 1, 2, 3 ), PoolIntArray( 0, 3, 4 ), PoolIntArray( 5, 6, 7, 0, 4, 8 ) ]
-outlines = [ PoolVector2Array( 258.082, 449.146, 655.277, 456.282, 677.872, 437.254, 656.467, 314.766, 695.71, 282.657, 966.715, 144.147, 1127.39, 538.337, 1111.93, 556.175, 108.242, 543.094 ) ]
+vertices = PoolVector2Array( 1111.93, 556.175, 108.242, 543.094, 258.082, 449.146, 655.277, 456.282, 677.872, 437.254, 1127.39, 538.337, 656.467, 314.766, 635.663, 56.8283, 1119.87, 7.74664 )
+polygons = [ PoolIntArray( 0, 1, 2, 3 ), PoolIntArray( 0, 3, 4, 5 ), PoolIntArray( 6, 7, 8, 5, 4 ) ]
+outlines = [ PoolVector2Array( 258.082, 449.146, 655.277, 456.282, 677.872, 437.254, 656.467, 314.766, 635.663, 56.8283, 1119.87, 7.74664, 1127.39, 538.337, 1111.93, 556.175, 108.242, 543.094 ) ]
 
 [sub_resource type="RectangleShape2D" id=2]
 resource_local_to_scene = true
@@ -38,7 +38,7 @@ texture = ExtResource( 2 )
 
 [node name="CollisionPolygon2D" parent="walkableArea" index="0"]
 position = Vector2( 3.56763, 0 )
-polygon = PoolVector2Array( -3.54706, 595.215, 153.428, 508.403, 522.082, 514.349, 557.759, 498.889, 547.056, 354.995, 587.489, 343.103, 858.54, 200.144, 1009.66, 580.944, 1012.04, 607.107 )
+polygon = PoolVector2Array( -3.54706, 595.215, 153.428, 508.403, 522.082, 514.349, 557.759, 498.889, 547.056, 354.995, 520.552, 111.328, 1000.98, 64.1338, 1009.66, 580.944, 1012.04, 607.107 )
 
 [node name="NavigationPolygonInstance" parent="Navigation2D" index="0"]
 navpoly = SubResource( 1 )
@@ -106,6 +106,9 @@ rotation = 2.90295
 image = ExtResource( 9 )
 itemType = "NPC"
 viewText = [ "How's it hanging?", "...", "I have been stuck up here for three days.", "Do you need help?", "..yes", "They say in the forest there's a magical paste which can unstick people from ceilings.", "That's so specific.", "OK and?" ]
+reactionText = {
+"ceilingPaste": [ "You apply the anti ceiling stick paste to the man's feet.", "With a THUD, he crashes to the ground, free to finally leave the tavern.", "+100 XP, -10 Sanity." ]
+}
 npcFace = ExtResource( 8 )
 faceArray = [ 2, 2, 2, 1, 2, 2, 1, 2 ]
 

@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://Images/Rooms/aodanRoad.png" type="Texture" id=1]
 [ext_resource path="res://Scenes/mainScene.tscn" type="PackedScene" id=2]
@@ -7,7 +7,6 @@
 [ext_resource path="res://Images/People/aodanGuy.png" type="Texture" id=5]
 [ext_resource path="res://Images/Portraits/aodanFace.png" type="Texture" id=6]
 [ext_resource path="res://Images/Items/stick.png" type="Texture" id=7]
-[ext_resource path="res://Images/Items/mushRoom.png" type="Texture" id=8]
 [ext_resource path="res://Images/Items/dungeonKey.png" type="Texture" id=9]
 
 [sub_resource type="NavigationPolygon" id=1]
@@ -21,7 +20,7 @@ extents = Vector2( 48.7442, 78.856 )
 
 [sub_resource type="RectangleShape2D" id=3]
 resource_local_to_scene = true
-extents = Vector2( 32.651, 32.6374 )
+extents = Vector2( 55.4916, 111.956 )
 
 [sub_resource type="RectangleShape2D" id=4]
 resource_local_to_scene = true
@@ -32,10 +31,6 @@ resource_local_to_scene = true
 extents = Vector2( 32.651, 32.6374 )
 
 [sub_resource type="RectangleShape2D" id=6]
-resource_local_to_scene = true
-extents = Vector2( 32.651, 32.6374 )
-
-[sub_resource type="RectangleShape2D" id=7]
 resource_local_to_scene = true
 extents = Vector2( 32.651, 32.6374 )
 
@@ -78,15 +73,18 @@ viewText = [ "Hey Aodan, you're looking kind of rough..", "Yeah? It's your fault
 reactionText = {
 "beerStein": [ "Aodan doesn't want that.", "Come back with a better gift!" ],
 "mushroom": [ "It's your mushroom!", "You figure out how to get rid of it!" ],
+"snakeCoin": [ "Aodan is a car salesman, not a coin dealer.", "HOWEVER", "He has seen coins before.", "Not this one though." ],
 "steelHelmet": [ "Aodan is grateful for the steel helmet.", "It will offer him more protection than this cardboard box.", "In return, he gives you a dungeon key.", "Take a wild guess at what it does.." ],
 "stick": [ "What is with you and hitting every NPC with every weapon?", "That's not healthy.." ],
-"woodenClub": [ "Bonk!", "But he didn't go to jail.." ]
+"woodenClub": [ "Bonk!", "But he didn't go to jail.." ],
+"woodenOar": [ "This oar that?", "Hehe..", "GET IT???" ]
 }
 powerSignals = [ "steelHelmet" ]
 npcFace = ExtResource( 6 )
 faceArray = [ 1, 2, 1, 2, 1, 2, 1, 2, 1, 2, 1, 2, 1, 2, 1, 2 ]
 
 [node name="CollisionShape2D" parent="aodan/Area2D" index="0"]
+position = Vector2( -14.0308, 1.68372 )
 shape = SubResource( 3 )
 
 [node name="Sprite" parent="aodan" index="2"]
@@ -111,22 +109,7 @@ texture = ExtResource( 7 )
 [node name="walkPos" parent="stick" index="3"]
 position = Vector2( -86.2674, 35.4919 )
 
-[node name="mushroom" parent="." index="7" instance=ExtResource( 4 )]
-position = Vector2( 788.145, 565.115 )
-image = ExtResource( 8 )
-itemType = "pickup"
-viewText = [ "You pick up the potentially toxic mushroom and put it in your pocket", "your good pocket. ", "You now have a toxic mushroom in your pocket." ]
-
-[node name="CollisionShape2D" parent="mushroom/Area2D" index="0"]
-shape = SubResource( 5 )
-
-[node name="Sprite" parent="mushroom" index="2"]
-texture = ExtResource( 8 )
-
-[node name="walkPos" parent="mushroom" index="3"]
-position = Vector2( -85.0995, 1.52116 )
-
-[node name="signToWizardRoad" parent="." index="8" instance=ExtResource( 4 )]
+[node name="signToWizardRoad" parent="." index="7" instance=ExtResource( 4 )]
 position = Vector2( 638.072, 337.051 )
 image = ExtResource( 3 )
 itemType = "door"
@@ -135,7 +118,7 @@ doorUseText = "You do the thing."
 
 [node name="CollisionShape2D" parent="signToWizardRoad/Area2D" index="0"]
 position = Vector2( 28.4679, 53.9391 )
-shape = SubResource( 6 )
+shape = SubResource( 5 )
 
 [node name="Sprite" parent="signToWizardRoad" index="2"]
 position = Vector2( 34.8357, 53.5645 )
@@ -145,15 +128,15 @@ texture = ExtResource( 3 )
 [node name="Light2D" parent="signToWizardRoad" index="4"]
 position = Vector2( 94.3934, -25.4712 )
 
-[node name="dungeonKey" parent="." index="9" instance=ExtResource( 4 )]
+[node name="dungeonKey" parent="." index="8" instance=ExtResource( 4 )]
 position = Vector2( -331.313, 163.134 )
 image = ExtResource( 9 )
 itemType = "pickup"
 
 [node name="CollisionShape2D" parent="dungeonKey/Area2D" index="0"]
-shape = SubResource( 7 )
+shape = SubResource( 6 )
 
-[node name="player" parent="." index="10"]
+[node name="player" parent="." index="9"]
 position = Vector2( 221.515, 520.312 )
 
 [connection signal="powerSignal" from="aodan" to="dungeonKey" method="pickup"]
@@ -161,6 +144,5 @@ position = Vector2( 221.515, 520.312 )
 [editable path="signToFork"]
 [editable path="aodan"]
 [editable path="stick"]
-[editable path="mushroom"]
 [editable path="signToWizardRoad"]
 [editable path="dungeonKey"]

@@ -1,0 +1,129 @@
+[gd_scene load_steps=12 format=2]
+
+[ext_resource path="res://Images/Rooms/dungeon1.png" type="Texture" id=1]
+[ext_resource path="res://Scenes/mainScene.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Scenes/item.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Images/Items/giftBox.png" type="Texture" id=4]
+[ext_resource path="res://Images/Items/rose.png" type="Texture" id=5]
+[ext_resource path="res://Images/Items/skull.png" type="Texture" id=6]
+[ext_resource path="res://Sounds/Assembling - Asher Fulero.mp3" type="AudioStream" id=7]
+
+[sub_resource type="NavigationPolygon" id=1]
+vertices = PoolVector2Array( 167.449, 534.771, 157.914, 534.771, 265.979, 461.668, 411.126, 441.539, 757.57, 335.592, 1043.63, 552.782, 404.769, 380.09, 502.24, 320.76 )
+polygons = [ PoolIntArray( 0, 1, 2, 3 ), PoolIntArray( 4, 5, 0, 3 ), PoolIntArray( 3, 6, 7, 4 ) ]
+outlines = [ PoolVector2Array( 157.914, 534.771, 265.979, 461.668, 411.126, 441.539, 404.769, 380.09, 502.24, 320.76, 757.57, 335.592, 1043.63, 552.782, 167.449, 534.771 ) ]
+
+[sub_resource type="RectangleShape2D" id=2]
+resource_local_to_scene = true
+extents = Vector2( 55.1567, 85.0756 )
+
+[sub_resource type="RectangleShape2D" id=3]
+resource_local_to_scene = true
+extents = Vector2( 88.2614, 149.989 )
+
+[sub_resource type="RectangleShape2D" id=4]
+resource_local_to_scene = true
+extents = Vector2( 113.931, 141.912 )
+
+[node name="wizardDungeon1" instance=ExtResource( 2 )]
+sceneMusic = ExtResource( 7 )
+canFastTravel = false
+
+[node name="background" parent="." index="0"]
+texture = ExtResource( 1 )
+
+[node name="CollisionPolygon2D" parent="walkableArea" index="0"]
+polygon = PoolVector2Array( 48.3737, 598.806, 159.617, 511.93, 305.823, 484.384, 287.812, 421.876, 392.699, 371.021, 649.089, 384.794, 928.788, 605.163 )
+
+[node name="NavigationPolygonInstance" parent="Navigation2D" index="0"]
+navpoly = SubResource( 1 )
+
+[node name="player" parent="." index="4"]
+position = Vector2( 536.467, 534.857 )
+
+[node name="dungeonStory1" parent="." index="5" instance=ExtResource( 3 )]
+position = Vector2( -243.787, 127.245 )
+itemType = "story"
+viewText = [ "Well shoot.", "You walked into the really cool wizard tower, expecting to find a really cool wizard.", "But it seems you've discovered some kind of sick puzzle dungeon.", "Like any puzzle dungeon, this one is stocked with interesting challenges to..", "you know..", "puzzle you?" ]
+
+[node name="tablet" parent="." index="6" instance=ExtResource( 3 )]
+position = Vector2( 209, 392 )
+itemType = "view"
+viewText = [ "The stone tablet says,", "\"Many before you have come to this place, all seeking different ends.\"", "\"Some seek riches and worldly wealth,", "some seek vengance and death,", "others seek love and peace.", "Why do you come here?\"" ]
+
+[node name="CollisionShape2D" parent="tablet/Area2D" index="0"]
+position = Vector2( 5.24408, 16.4814 )
+rotation = -0.0764721
+shape = SubResource( 2 )
+
+[node name="Sprite" parent="tablet" index="2"]
+position = Vector2( -319.068, -69.8456 )
+
+[node name="door" parent="." index="7" instance=ExtResource( 3 )]
+position = Vector2( -265.843, 326.32 )
+itemType = "door"
+doorLocked = true
+doorExit = "res://Rooms/wizardDungeon2.tscn"
+doorLockedText = "The gate is rusted shut, and won't budge."
+doorUseText = "The door silently glides open."
+
+[node name="CollisionShape2D" parent="door/Area2D" index="0"]
+position = Vector2( 1144.35, 32.5522 )
+shape = SubResource( 3 )
+
+[node name="walkPos" parent="door" index="3"]
+position = Vector2( 1031.21, 220.227 )
+
+[node name="treasure" parent="." index="8" instance=ExtResource( 3 )]
+visible = false
+position = Vector2( 380.085, 412.039 )
+image = ExtResource( 4 )
+itemType = "pickup"
+viewText = [ "A voice from inside your head whispers,", "\"You choose treasure and wealth?\"", "\"Perhaps you'll use it for good..\"" ]
+
+[node name="skull" parent="." index="9" instance=ExtResource( 3 )]
+visible = false
+position = Vector2( 509.583, 410.357 )
+image = ExtResource( 6 )
+itemType = "pickup"
+viewText = [ "A voice from inside your head whispers,", "\"You choose Death and Hatred?", "Perhaps you have been hurt..\"" ]
+reactionText = {
+}
+
+[node name="rose" parent="." index="10" instance=ExtResource( 3 )]
+visible = false
+position = Vector2( 631.513, 412.88 )
+image = ExtResource( 5 )
+itemType = "pickup"
+viewText = [ "A voice from inside your head whispers,", "\"You choose love and peace?", "\"Perhaps it is motivated by something else..\"" ]
+reactionText = {
+}
+
+[node name="bigSkull" parent="." index="11" instance=ExtResource( 3 )]
+position = Vector2( -205.733, 1.18921 )
+itemType = "view"
+viewText = [ "A massive skull carved into the end of the hall.", "It certainly sets the tone of the room.", "There is an air of finality about this place." ]
+
+[node name="CollisionShape2D" parent="bigSkull/Area2D" index="0"]
+position = Vector2( 709.807, 226.856 )
+shape = SubResource( 4 )
+
+[node name="walkPos" parent="bigSkull" index="3"]
+position = Vector2( 717.814, 426.221 )
+
+[connection signal="activateSignal" from="tablet" to="treasure" method="showItem"]
+[connection signal="activateSignal" from="tablet" to="skull" method="showItem"]
+[connection signal="activateSignal" from="tablet" to="rose" method="showItem"]
+[connection signal="onPickup" from="treasure" to="door" method="unlockDoor"]
+[connection signal="onPickup" from="treasure" to="skull" method="hideItem"]
+[connection signal="onPickup" from="treasure" to="rose" method="hideItem"]
+[connection signal="onPickup" from="skull" to="door" method="unlockDoor"]
+[connection signal="onPickup" from="skull" to="treasure" method="hideItem"]
+[connection signal="onPickup" from="skull" to="rose" method="hideItem"]
+[connection signal="onPickup" from="rose" to="door" method="unlockDoor"]
+[connection signal="onPickup" from="rose" to="treasure" method="hideItem"]
+[connection signal="onPickup" from="rose" to="skull" method="hideItem"]
+
+[editable path="tablet"]
+[editable path="door"]
+[editable path="bigSkull"]

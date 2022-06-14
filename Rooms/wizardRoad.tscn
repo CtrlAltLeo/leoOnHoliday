@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://Scenes/mainScene.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Images/Rooms/wizardRoad.png" type="Texture" id=2]
@@ -8,6 +8,7 @@
 [ext_resource path="res://Images/Portraits/wizardFace.png" type="Texture" id=6]
 [ext_resource path="res://Images/Items/nescontroller.png" type="Texture" id=7]
 [ext_resource path="res://Images/Items/quarter.png" type="Texture" id=8]
+[ext_resource path="res://Images/Items/blueDot.png" type="Texture" id=9]
 
 [sub_resource type="NavigationPolygon" id=1]
 vertices = PoolVector2Array( 821.632, 438.899, 859.05, 542.243, 605.144, 547.588, 672.852, 461.171, 784.214, 368.518, 667.507, 382.772, 641.671, 289.228, 696.906, 303.482 )
@@ -30,6 +31,10 @@ extents = Vector2( 24.0651, 44.0213 )
 resource_local_to_scene = true
 extents = Vector2( 26.0985, 18.063 )
 
+[sub_resource type="RectangleShape2D" id=6]
+resource_local_to_scene = true
+extents = Vector2( 33.7621, 32.7478 )
+
 [node name="wizardRoad" instance=ExtResource( 1 )]
 
 [node name="background" parent="." index="0"]
@@ -40,9 +45,6 @@ polygon = PoolVector2Array( 539.089, 348.181, 556.907, 350.854, 583.634, 355.309
 
 [node name="NavigationPolygonInstance" parent="Navigation2D" index="0"]
 navpoly = SubResource( 1 )
-
-[node name="player" parent="." index="3"]
-position = Vector2( 625.697, 541.644 )
 
 [node name="AlphusWizard" parent="." index="4" instance=ExtResource( 4 )]
 position = Vector2( 731.174, 303.407 )
@@ -140,9 +142,30 @@ position = Vector2( -164.234, 120.816 )
 image = ExtResource( 8 )
 itemType = "pickup"
 
+[node name="player" parent="." index="9"]
+position = Vector2( 625.697, 541.644 )
+
+[node name="blueDot" parent="." index="10" instance=ExtResource( 4 )]
+position = Vector2( 359.632, 288.106 )
+rotation = -0.020737
+scale = Vector2( 0.310327, 0.310327 )
+image = ExtResource( 9 )
+itemType = "pickup"
+viewText = [ "You've done a lot of weird things today.", "This is pretty weird.", "You pick off the blue dot from the tree.", "Neat." ]
+
+[node name="CollisionShape2D" parent="blueDot/Area2D" index="0"]
+shape = SubResource( 6 )
+
+[node name="Sprite" parent="blueDot" index="2"]
+texture = ExtResource( 9 )
+
+[node name="walkPos" parent="blueDot" index="3"]
+position = Vector2( 631.361, 463.218 )
+
 [connection signal="powerSignal" from="AlphusWizard" to="quarter" method="pickup"]
 
 [editable path="AlphusWizard"]
 [editable path="signToAodan"]
 [editable path="signToOutskirts"]
 [editable path="nesController"]
+[editable path="blueDot"]

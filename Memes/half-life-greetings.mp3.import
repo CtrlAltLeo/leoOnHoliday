@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/half-life-greetings.mp3-940c7d02cadc0c3c34173635b7ddbb09.mp3str"
+
+[deps]
+
+source_file="res://Memes/half-life-greetings.mp3"
+dest_files=[ "res://.import/half-life-greetings.mp3-940c7d02cadc0c3c34173635b7ddbb09.mp3str" ]
+
+[params]
+
+loop=false
+loop_offset=0

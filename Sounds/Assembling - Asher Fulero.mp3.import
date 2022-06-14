@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/Assembling - Asher Fulero.mp3-68304e2c08da41aa4fb9503e43be340a.mp3str"
+
+[deps]
+
+source_file="res://Sounds/Assembling - Asher Fulero.mp3"
+dest_files=[ "res://.import/Assembling - Asher Fulero.mp3-68304e2c08da41aa4fb9503e43be340a.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

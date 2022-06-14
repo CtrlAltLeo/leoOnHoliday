@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://Images/Rooms/wildsRoad2.png" type="Texture" id=1]
 [ext_resource path="res://Scenes/mainScene.tscn" type="PackedScene" id=2]
@@ -6,6 +6,7 @@
 [ext_resource path="res://Images/Items/mileMarker.png" type="Texture" id=4]
 [ext_resource path="res://Images/Items/arcadeMachine1.png" type="Texture" id=5]
 [ext_resource path="res://Images/Items/vines.png" type="Texture" id=6]
+[ext_resource path="res://Sounds/Sunn Forest - ELPHNT.mp3" type="AudioStream" id=7]
 
 [sub_resource type="NavigationPolygon" id=1]
 vertices = PoolVector2Array( 410.791, 512.443, 586.794, 322.169, 696.201, 282.926, 759.229, 274.601, 771.121, 284.115, 809.175, 551.686 )
@@ -44,6 +45,7 @@ resource_local_to_scene = true
 extents = Vector2( 40.7169, 53.6617 )
 
 [node name="wildRoads2" instance=ExtResource( 2 )]
+sceneMusic = ExtResource( 7 )
 
 [node name="background" parent="." index="0"]
 texture = ExtResource( 1 )
@@ -106,6 +108,7 @@ reactionText = {
 "rat": [ "You try to push the rat into the coin slot.", "Unfortunately, that doesn't work.", "Why did you think it would?" ],
 "woodenClub": [ "NO!!!", "Do NOT Do that!", "Do I have to take away that club?" ]
 }
+powerSignals = [ "quarter" ]
 
 [node name="CollisionShape2D" parent="arcadeMachine/Area2D" index="0"]
 shape = SubResource( 5 )
@@ -129,7 +132,18 @@ position = Vector2( 10.0794, 10.0793 )
 scale = Vector2( 0.724392, 0.724392 )
 texture = ExtResource( 6 )
 
+[node name="arcadeDoor" parent="." index="9" instance=ExtResource( 3 )]
+position = Vector2( -400.025, 92.0692 )
+itemType = "door"
+doorExit = "res://cutScenes/gameCutscene.tscn"
+doorUseText = "The quarter works! This game looks sick.."
+
+[node name="quarter" parent="." index="10" instance=ExtResource( 3 )]
+position = Vector2( 623.37, 537.94 )
+itemType = "pickup"
+
 [connection signal="doorUnlock" from="markerToCrossRoads" to="roadVines" method="hideItem"]
+[connection signal="powerSignal" from="arcadeMachine" to="arcadeDoor" method="useDoor"]
 
 [editable path="markerToRoad1"]
 [editable path="markerToCrossRoads"]

@@ -154,10 +154,6 @@ shape = SubResource( 5 )
 [node name="Sprite" parent="rubyNiche" index="2"]
 texture = ExtResource( 5 )
 
-[node name="ruby" parent="." index="9" instance=ExtResource( 4 )]
-position = Vector2( 456.791, 492.146 )
-itemType = "pickup"
-
 [connection signal="powerSignal" from="rubyNiche" to="signToForestBridge" method="showItem"]
 
 [editable path="signToBadEnter"]

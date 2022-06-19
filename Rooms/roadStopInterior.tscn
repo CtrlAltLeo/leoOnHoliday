@@ -100,7 +100,8 @@ reactionText = {
 "banjo": [ "You start to play the banjo for the barkeeper.", "You're so dangerous.." ],
 "beerStein": [ "The barkeeper is kind of surprised by the beer stein.", "He says that they don't have any as fancy as this one.", "He advises you check with people in the city about it." ],
 "coin": [ "You give the bartender a coin, and he pours you a glass of chocolate milk.", "This is a Core Item. You cannot win the game without this.", "...", "Not really." ],
-"woodenClub": [ "You decide to beat the man to death.", "No you don't! ", "What kind of game do you think this is?" ]
+"woodenClub": [ "You decide to beat the man to death.", "No you don't! ", "What kind of game do you think this is?" ],
+"woodenOar": [ "You.", "Can't.", "Do.", "That." ]
 }
 powerSignals = [ "coin" ]
 npcFace = ExtResource( 5 )
@@ -126,7 +127,8 @@ viewText = [ "Excuse me sir, I-", "WHAZZAT?", "WHOOHA...Yeah I like a good PARTA
 reactionText = {
 "banjo": [ "You play the banjo for the man.", "You've never played the banjo before, but he seems to enjoy it.", "You don't know where he got this oar, but it's yours now." ],
 "beerStein": [ "More strong drink is the opposite of what this guy needs.", "Or is that the other way around?" ],
-"woodenClub": [ "A good whack will sober up anyone.", "Except this guy.", "Yikes!" ]
+"woodenClub": [ "A good whack will sober up anyone.", "Except this guy.", "Yikes!" ],
+"woodenOar": [ "Contrary to popular belief, you don't beat the man to death.", "Why would you even do that?", "You need to get a hobby." ]
 }
 powerSignals = [ "banjo" ]
 npcFace = ExtResource( 7 )

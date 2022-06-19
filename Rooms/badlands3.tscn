@@ -75,6 +75,7 @@ position = Vector2( -208.111, 8.32446 )
 position = Vector2( 941.852, 448.331 )
 image = ExtResource( 6 )
 itemType = "door"
+doorExit = "res://Rooms/badlands2.tscn"
 doorUseText = "You leave Snake Jones, for now.."
 
 [node name="CollisionShape2D" parent="exitToBadlands2/Area2D" index="0"]

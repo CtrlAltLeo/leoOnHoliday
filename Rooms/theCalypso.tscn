@@ -109,6 +109,7 @@ viewText = [ "How's it hanging?", "...", "I have been stuck up here for three da
 reactionText = {
 "ceilingPaste": [ "You apply the anti ceiling stick paste to the man's feet.", "With a THUD, he crashes to the ground, free to finally leave the tavern.", "+100 XP, -10 Sanity." ]
 }
+powerSignals = [ "ceilingPaste" ]
 npcFace = ExtResource( 8 )
 faceArray = [ 2, 2, 2, 1, 2, 2, 1, 2 ]
 
@@ -120,6 +121,8 @@ texture = ExtResource( 9 )
 
 [node name="walkPos" parent="ceilingDweller" index="3"]
 position = Vector2( 150.869, -134.739 )
+
+[connection signal="powerSignal" from="ceilingDweller" to="ceilingDweller" method="hideItem"]
 
 [editable path="matToCity"]
 [editable path="saltPile"]

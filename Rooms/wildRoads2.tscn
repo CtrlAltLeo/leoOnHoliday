@@ -138,10 +138,6 @@ itemType = "door"
 doorExit = "res://cutScenes/gameCutscene.tscn"
 doorUseText = "The quarter works! This game looks sick.."
 
-[node name="quarter" parent="." index="10" instance=ExtResource( 3 )]
-position = Vector2( 623.37, 537.94 )
-itemType = "pickup"
-
 [connection signal="doorUnlock" from="markerToCrossRoads" to="roadVines" method="hideItem"]
 [connection signal="powerSignal" from="arcadeMachine" to="arcadeDoor" method="useDoor"]
 

@@ -75,7 +75,7 @@ flip_h = true
 position = Vector2( 712.734, 467.309 )
 image = ExtResource( 4 )
 itemType = "NPC"
-viewText = [ "What are you doing in my woods?!", "I am Gildra, witch of violence!", "You're a witch?", "Wow, you are not ugly.", "Are witches supposed to be ugly?", "I don't know, you tell me!", "I am in fact not ugly. ", "And I'm glad you noticed, because someone else has too.", "There is a wizard who lives on the other side of the world.", "His name is Cosimo, and he is a dreamboat!", "dream smp..", "What?", "Nothing. Continue!", "Can you, well...", "Can you go talk to him for me?", "What would I even say?", "Tell him I want a token of his affections.", "I need a flower! A violent Violet.", "Ok.", "His tower is guarded by many traps. Take this Ruby, it will help you." ]
+viewText = [ "What are you doing in my woods?!", "I am Gildra, witch of violence!", "You're a witch?", "Wow, you are not ugly.", "Are witches supposed to be ugly?", "I don't know, you tell me!", "I am in fact not ugly. ", "And I'm glad you noticed, because someone else has too.", "There is a wizard who lives on the other side of the world.", "His name is Cosimo, and he is a dreamboat!", "dream smp..", "What?", "Nothing. Continue!", "Can you, well...", "Can you go talk to him for me?", "What would I even say?", "Tell him I want to go see the new Dr. Strange with him!", "...", "Ok.", "His tower is guarded by many traps. Take this Ruby, it will help you." ]
 npcFace = ExtResource( 5 )
 faceArray = [ 2, 2, 1, 1, 2, 1, 2, 2, 2, 2, 1, 2, 1, 2, 2, 1, 2, 2, 1, 2 ]
 
@@ -90,7 +90,7 @@ visible = false
 position = Vector2( 712.734, 467.309 )
 image = ExtResource( 4 )
 itemType = "NPC"
-viewText = [ "What are you waiting for?!", "Go tell Cosimo about me and my flower needs!" ]
+viewText = [ "What are you waiting for?!", "Go find Cosimo!" ]
 reactionText = {
 }
 npcFace = ExtResource( 5 )
@@ -116,8 +116,8 @@ shape = SubResource( 5 )
 [node name="Sprite" parent="ruby" index="2"]
 texture = ExtResource( 7 )
 
-[connection signal="activateSignal" from="witch" to="witch2" method="showItem"]
 [connection signal="activateSignal" from="witch" to="ruby" method="pickup"]
+[connection signal="activateSignal" from="witch" to="witch2" method="showItem"]
 
 [editable path="signToWRoad1"]
 [editable path="witch"]

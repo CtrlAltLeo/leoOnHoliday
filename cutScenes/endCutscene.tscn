@@ -1,0 +1,340 @@
+[gd_scene load_steps=13 format=2]
+
+[ext_resource path="res://Scenes/cutScene.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Images/UI/Kenney Bold.ttf" type="DynamicFontData" id=2]
+[ext_resource path="res://Images/leoAnimations/leoidle1.png" type="Texture" id=3]
+[ext_resource path="res://Images/People/kingActor.png" type="Texture" id=4]
+[ext_resource path="res://Images/People/courtWIzard.png" type="Texture" id=5]
+[ext_resource path="res://Images/People/spencerActor.png" type="Texture" id=6]
+[ext_resource path="res://Images/People/necromancer.png" type="Texture" id=7]
+[ext_resource path="res://Images/Items/brink.png" type="Texture" id=8]
+[ext_resource path="res://Images/Rooms/livingRoom.png" type="Texture" id=9]
+[ext_resource path="res://Sounds/Crops - Telecasted.mp3" type="AudioStream" id=10]
+
+[sub_resource type="Animation" id=2]
+resource_name = "cutScene"
+length = 45.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("livingRoom:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 40.1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 5.73889, 5.74384 ), Vector2( 1.04251, 1.04831 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("livingRoom:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 40.1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 548.33, 114.185 ), Vector2( 510.475, 296.192 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("text:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.5, 5, 5.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( -1049.78, -1.96616 ), Vector2( -230.502, 20.6868 ), Vector2( -230.502, 20.6868 ), Vector2( -230.502, -355.494 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("text2:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 1.96698, 5, 5.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( -1049.78, -1.96616 ), Vector2( 43.4933, -71.5588 ), Vector2( 43.4933, -71.5588 ), Vector2( 43.4933, -447.74 ) ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("text3:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0, 4.9, 5.8, 9.5, 10 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( -1239.78, 224.034 ), Vector2( -1239.78, 224.034 ), Vector2( 13.2086, 184.436 ), Vector2( 13.2086, 184.436 ), Vector2( 986.188, 665.268 ) ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("text4:position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0, 9.6, 10, 14, 15.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( -1231.78, 462.034 ), Vector2( -1231.78, 462.034 ), Vector2( -165.468, -213.96 ), Vector2( -165.468, -213.96 ), Vector2( -1028.14, -567.514 ) ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("text5:position")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0, 13.7, 15.5, 18, 19 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( -1239.78, 224.034 ), Vector2( -1239.78, 224.034 ), Vector2( 209.921, -694.225 ), Vector2( 209.921, -694.225 ), Vector2( 1159.85, -766.144 ) ]
+}
+tracks/7/type = "value"
+tracks/7/path = NodePath("text6:position")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"times": PoolRealArray( 0, 17.6, 18.9, 21.3, 23.1 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( -1235.78, 490.034 ), Vector2( -1235.78, 490.034 ), Vector2( 28.7866, -453.9 ), Vector2( 28.7866, -453.9 ), Vector2( 49.7629, -43.3636 ) ]
+}
+tracks/8/type = "value"
+tracks/8/path = NodePath("text7:position")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/keys = {
+"times": PoolRealArray( 0, 21.3, 23.5, 26, 27.1 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( -1257.78, 670.034 ), Vector2( -1257.78, 670.034 ), Vector2( 69.7156, -465.683 ), Vector2( 69.7156, -465.683 ), Vector2( 806.883, 19.7685 ) ]
+}
+tracks/9/type = "value"
+tracks/9/path = NodePath("text8:position")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/keys = {
+"times": PoolRealArray( 0, 24.7, 27.1, 29.7, 31.2 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( -1273.78, 878.034 ), Vector2( -1273.78, 878.034 ), Vector2( 11.7629, -476.436 ), Vector2( 11.7629, -476.436 ), Vector2( -1087.99, -377.548 ) ]
+}
+tracks/10/type = "value"
+tracks/10/path = NodePath("text9:position")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/keys = {
+"times": PoolRealArray( 0, 29.2, 31.2 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( -1309.7, 1095.79 ), Vector2( -1309.7, 1095.79 ), Vector2( 65.7424, -459.451 ) ]
+}
+
+[sub_resource type="DynamicFont" id=1]
+size = 30
+font_data = ExtResource( 2 )
+
+[node name="endCutscene" instance=ExtResource( 1 )]
+position = Vector2( -1.49832, 1.49829 )
+cutsceneMusic = ExtResource( 10 )
+
+[node name="AnimationPlayer" parent="." index="0"]
+anims/cutScene = SubResource( 2 )
+
+[node name="livingRoom" type="Sprite" parent="." index="1"]
+position = Vector2( 510.475, 296.192 )
+scale = Vector2( 1.04251, 1.04831 )
+texture = ExtResource( 9 )
+
+[node name="text" type="Node2D" parent="." index="2"]
+position = Vector2( -230.502, -355.494 )
+
+[node name="RichTextLabel" type="RichTextLabel" parent="text" index="0"]
+margin_left = 332.054
+margin_top = 24.0518
+margin_right = 1029.05
+margin_bottom = 164.052
+custom_fonts/normal_font = SubResource( 1 )
+text = "As Leo was transported through time and space,"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="text2" type="Node2D" parent="." index="3"]
+position = Vector2( 43.4933, -447.74 )
+
+[node name="RichTextLabel" type="RichTextLabel" parent="text2" index="0"]
+margin_left = 231.248
+margin_top = 249.736
+margin_right = 928.248
+margin_bottom = 389.736
+custom_fonts/normal_font = SubResource( 1 )
+text = "He saw a very epic vision which revealed some major plot elements.
+"
+scroll_active = false
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="text3" type="Node2D" parent="." index="4"]
+position = Vector2( 986.188, 665.268 )
+
+[node name="RichTextLabel" type="RichTextLabel" parent="text3" index="0"]
+margin_left = 231.248
+margin_top = 249.736
+margin_right = 928.248
+margin_bottom = 389.736
+custom_fonts/normal_font = SubResource( 1 )
+text = "The Necromancer was reunited with his long lost brother."
+scroll_active = false
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="text4" type="Node2D" parent="." index="5"]
+position = Vector2( -1028.14, -567.514 )
+
+[node name="RichTextLabel" type="RichTextLabel" parent="text4" index="0"]
+margin_left = 178.0
+margin_top = 250.0
+margin_right = 1141.0
+margin_bottom = 497.0
+custom_fonts/normal_font = SubResource( 1 )
+text = "The King, through the miracle of some random guy, was healed of the curse, and pardoned the Necromancer. "
+scroll_active = false
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="text5" type="Node2D" parent="." index="6"]
+position = Vector2( 1159.85, -766.144 )
+
+[node name="RichTextLabel" type="RichTextLabel" parent="text5" index="0"]
+margin_left = 193.248
+margin_top = 753.736
+margin_right = 890.248
+margin_bottom = 893.736
+custom_fonts/normal_font = SubResource( 1 )
+text = "Spencer and his copy of brink were returned to the real world"
+scroll_active = false
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="text10" type="Node2D" parent="." index="7"]
+position = Vector2( 888.44, -745.596 )
+
+[node name="RichTextLabel" type="RichTextLabel" parent="text10" index="0"]
+margin_left = 193.248
+margin_top = 753.736
+margin_right = 890.248
+margin_bottom = 893.736
+custom_fonts/normal_font = SubResource( 1 )
+text = "Spencer and his copy of brink were returned to the real world"
+scroll_active = false
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="text6" type="Node2D" parent="." index="8"]
+position = Vector2( 49.7629, -43.3636 )
+
+[node name="RichTextLabel" type="RichTextLabel" parent="text6" index="0"]
+margin_left = 193.248
+margin_top = 753.736
+margin_right = 890.248
+margin_bottom = 893.736
+custom_fonts/normal_font = SubResource( 1 )
+text = "And Leo finally got home."
+scroll_active = false
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="text7" type="Node2D" parent="." index="9"]
+position = Vector2( 806.883, 19.7685 )
+
+[node name="RichTextLabel" type="RichTextLabel" parent="text7" index="0"]
+margin_left = 193.248
+margin_top = 753.736
+margin_right = 890.248
+margin_bottom = 893.736
+custom_fonts/normal_font = SubResource( 1 )
+text = "It had been a lovely holiday.."
+scroll_active = false
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="text8" type="Node2D" parent="." index="10"]
+position = Vector2( -1087.99, -377.548 )
+
+[node name="RichTextLabel" type="RichTextLabel" parent="text8" index="0"]
+margin_left = 193.248
+margin_top = 753.736
+margin_right = 890.248
+margin_bottom = 893.736
+custom_fonts/normal_font = SubResource( 1 )
+text = "But all things come to an end sooner or later..
+"
+scroll_active = false
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="text9" type="Node2D" parent="." index="11"]
+position = Vector2( 65.7424, -459.451 )
+
+[node name="RichTextLabel" type="RichTextLabel" parent="text9" index="0"]
+margin_left = 193.248
+margin_top = 753.736
+margin_right = 890.248
+margin_bottom = 893.736
+custom_fonts/normal_font = SubResource( 1 )
+text = "Thanks for playing!
+"
+scroll_active = false
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="necromancer" type="Sprite" parent="." index="12"]
+position = Vector2( -104.933, 388.29 )
+texture = ExtResource( 7 )
+
+[node name="courtWIzard" type="Sprite" parent="." index="13"]
+position = Vector2( 1149.82, 302.861 )
+texture = ExtResource( 5 )
+
+[node name="kingActor" type="Sprite" parent="." index="14"]
+position = Vector2( 1336.69, 337.566 )
+texture = ExtResource( 4 )
+
+[node name="leoidle1" type="Sprite" parent="." index="15"]
+position = Vector2( 1568.96, 345.575 )
+texture = ExtResource( 3 )
+
+[node name="spencerActor" type="Sprite" parent="." index="16"]
+position = Vector2( 258.143, 924.896 )
+texture = ExtResource( 6 )
+
+[node name="brink" type="Sprite" parent="." index="17"]
+position = Vector2( 474.388, 983.629 )
+texture = ExtResource( 8 )

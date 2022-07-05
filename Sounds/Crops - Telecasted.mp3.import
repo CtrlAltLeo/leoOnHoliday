@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/Crops - Telecasted.mp3-3a89496453a0ceecbd2f7a7bd20e1bd6.mp3str"
+
+[deps]
+
+source_file="res://Sounds/Crops - Telecasted.mp3"
+dest_files=[ "res://.import/Crops - Telecasted.mp3-3a89496453a0ceecbd2f7a7bd20e1bd6.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

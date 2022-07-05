@@ -1,13 +1,30 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://Images/Rooms/dungeon4.png" type="Texture" id=1]
 [ext_resource path="res://Scenes/mainScene.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Scenes/item.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Images/Items/cauldron.png" type="Texture" id=4]
+[ext_resource path="res://Scenes/logicCounter.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Images/People/necromancer.png" type="Texture" id=6]
+[ext_resource path="res://Images/Portraits/necroFace.png" type="Texture" id=7]
+[ext_resource path="res://Images/Items/portal___blue_portal_by_maxiesnax-d5pcfqc-3591305923-removebg-preview.png" type="Texture" id=8]
 
 [sub_resource type="NavigationPolygon" id=1]
 vertices = PoolVector2Array( 827.216, 508.551, 968.797, 538.755, 123.086, 536.868, 739.436, 461.358, 135.356, 514.215, 381.707, 425.49, 517.625, 383.016, 763.033, 370.746, 778.135, 418.883 )
 polygons = [ PoolIntArray( 0, 1, 2 ), PoolIntArray( 3, 0, 2, 4, 5, 6 ), PoolIntArray( 3, 6, 7, 8 ) ]
 outlines = [ PoolVector2Array( 135.356, 514.215, 381.707, 425.49, 517.625, 383.016, 763.033, 370.746, 778.135, 418.883, 739.436, 461.358, 827.216, 508.551, 968.797, 538.755, 123.086, 536.868 ) ]
+
+[sub_resource type="RectangleShape2D" id=2]
+resource_local_to_scene = true
+extents = Vector2( 82.2805, 82.5096 )
+
+[sub_resource type="RectangleShape2D" id=3]
+resource_local_to_scene = true
+extents = Vector2( 107.994, 176.103 )
+
+[sub_resource type="RectangleShape2D" id=4]
+resource_local_to_scene = true
+extents = Vector2( 53, 100 )
 
 [node name="wizardDungeon3" instance=ExtResource( 2 )]
 canFastTravel = false
@@ -26,6 +43,83 @@ position = Vector2( 111.415, 542.581 )
 
 [node name="cauldron" parent="." index="5" instance=ExtResource( 3 )]
 position = Vector2( 537.522, 424.547 )
+image = ExtResource( 4 )
+itemType = "useable"
+reactionText = {
+"castlevania": [ "You drop the game cart into the pot.", "It begins to boil a metallic gold color.", "The voice whispers..", "\"Do not fear the beast, become him.\"" ],
+"nes": [ "You drop the NES into the pot.", "It begins to bubble a bright green.", "The voice whispers..", "\"A wish to return home..\"" ],
+"nesController": [ "You drop the controller into the pot.", "It begins to boil a deep purple.", "The voice whispers..", "\"We are in control of our destiny.\"" ]
+}
+powerSignals = [ "nes", "castlevania", "nesController" ]
+removeUseableOnPower = false
+
+[node name="CollisionShape2D" parent="cauldron/Area2D" index="0"]
+position = Vector2( 4.49493, -8.24069 )
+shape = SubResource( 2 )
+
+[node name="Sprite" parent="cauldron" index="2"]
+position = Vector2( 4.12039, -6.36781 )
+scale = Vector2( 2.81436, 2.81436 )
+texture = ExtResource( 4 )
+
+[node name="walkPos" parent="cauldron" index="3"]
+position = Vector2( -117.246, 62.3667 )
 
 [node name="necromancer" parent="." index="6" instance=ExtResource( 3 )]
-position = Vector2( -90.3796, 360.33 )
+visible = false
+position = Vector2( 542.006, 420.103 )
+image = ExtResource( 6 )
+itemType = "NPC"
+viewText = [ "I am Cosimo, the Great and Terrible!", "Who DARES awaken me?", "I do!", "I am Leo, adventurer from another world.", "I want you to return me to my home world.", "And WHY would I do such a thing?", "Because..", "Because I..", "I've been across the entire world.", "I've fought snakes and bandits.", "I've helped people down from ceilings, and given salt to a wizard.", "I helped my friends who were stuck here, and I paid for chocolate milk.", "I met a witch, a giant and the king of this world.", "So if you won't take me back, I guess I'll have to fight you.", "...", "I have been watching your progress as you journeyed through this land. ", "You have stood up to all the tests this world has thrown at you, and never stopped going.", "I will return you to your home world, Leo the Adventurer.", "...", "Sweet." ]
+npcFace = ExtResource( 7 )
+faceArray = [ 2, 2, 1, 1, 1, 2, 1, 1, 1, 1, 1, 1, 1, 1, 2, 2, 2, 2, 1, 1 ]
+
+[node name="CollisionShape2D" parent="necromancer/Area2D" index="0"]
+position = Vector2( -3, -122 )
+shape = SubResource( 3 )
+
+[node name="Sprite" parent="necromancer" index="2"]
+position = Vector2( 7.94592, -133.492 )
+scale = Vector2( 2.44848, 2.44848 )
+texture = ExtResource( 6 )
+
+[node name="walkPos" parent="necromancer" index="3"]
+position = Vector2( -151.149, 99.448 )
+
+[node name="LastRoomStory" parent="." index="7" instance=ExtResource( 3 )]
+position = Vector2( -297.669, 161.516 )
+itemType = "story"
+viewText = [ "A soft voice whispers in your ear..", "\"Combine them all to return home..\"" ]
+
+[node name="logicCounter" parent="." index="8" instance=ExtResource( 5 )]
+position = Vector2( -230.927, 62.7375 )
+targetValue = 3
+
+[node name="doorToMeta" parent="." index="9" instance=ExtResource( 3 )]
+position = Vector2( -214.96, -7.07108 )
+doorExit = "res://Meta/DebugScreen.tscn"
+
+[node name="portal" parent="." index="10" instance=ExtResource( 3 )]
+visible = false
+image = ExtResource( 8 )
+itemType = "door"
+doorExit = "res://cutScenes/endCutscene.tscn"
+doorUseText = "You step into the portal.."
+
+[node name="CollisionShape2D" parent="portal/Area2D" index="0"]
+position = Vector2( 268, 390 )
+shape = SubResource( 4 )
+
+[node name="Sprite" parent="portal" index="2"]
+position = Vector2( 271.513, 392.938 )
+scale = Vector2( 0.410987, 0.410987 )
+texture = ExtResource( 8 )
+
+[connection signal="powerSignal" from="cauldron" to="logicCounter" method="addOne"]
+[connection signal="dioBoxOver" from="necromancer" to="portal" method="showItem"]
+[connection signal="True" from="logicCounter" to="cauldron" method="hideItem"]
+[connection signal="True" from="logicCounter" to="necromancer" method="showItem"]
+
+[editable path="cauldron"]
+[editable path="necromancer"]
+[editable path="portal"]

@@ -4,9 +4,11 @@ export(AudioStream) var sceneMusic
 
 export var canFastTravel = true
 
+
 var canWalk = false
 
 func _ready():
+	
 	
 	if canFastTravel:
 		WorldMap.unlock()
@@ -64,3 +66,5 @@ func addTextBox(arr, face, faceArr):
 		nBox.faceToText = faceArr
 	
 	self.add_child(nBox)
+	
+

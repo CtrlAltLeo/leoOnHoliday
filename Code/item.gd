@@ -22,6 +22,8 @@ export(Array, String) var keys = []
 
 var state = 0
 
+export var removeUseableOnPower = true
+
 export var doorLocked = false
 export var doorExit = ""
 export(String) var doorLockedText = "The door is locked."
@@ -37,8 +39,11 @@ signal activateSignal
 signal doorUnlock
 signal onPickup
 signal sendName(n)
+signal dioBoxOver
 
 func _ready():
+	
+	
 	
 	$CPUParticles2D.emitting = sparkle
 	
@@ -132,8 +137,9 @@ func use():
 		
 		if removeItemOnPower:
 			Globals.removeItem(Globals.activeItem)
-		
-		remove()
+			
+		if removeUseableOnPower:
+			remove()
 	
 	Globals.activeItem = ""
 	
@@ -171,6 +177,7 @@ func door():
 
 func activate():
 	Globals.disconnect("playerDoneWalking" ,self, "activate")
+	
 
 	emit_signal("sendName", self.id_name)
 	
@@ -195,6 +202,7 @@ func activate():
 		
 		else:	
 			Globals.addDioBox(viewText, npcFace.load_path, faceArray)
+			Globals.connect("dioBoxOver",self,"dioBoxOver")
 	
 	if itemType == "pickup":
 		
@@ -255,3 +263,8 @@ func showItem():
 	
 func resetPosition():
 	self.position = startPosition
+	
+func dioBoxOver():
+	print("over")
+	emit_signal("dioBoxOver")
+	Globals.disconnect("dioBoxOver",self,"dioBoxOver")

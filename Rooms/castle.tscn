@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=2]
+[gd_scene load_steps=23 format=2]
 
 [ext_resource path="res://Images/Rooms/throneRoom.png" type="Texture" id=1]
 [ext_resource path="res://Scenes/mainScene.tscn" type="PackedScene" id=2]
@@ -12,6 +12,7 @@
 [ext_resource path="res://Images/Items/sickle.png" type="Texture" id=10]
 [ext_resource path="res://Images/Items/steelHelmet.png" type="Texture" id=11]
 [ext_resource path="res://Images/Items/nes.png" type="Texture" id=12]
+[ext_resource path="res://Images/Items/goldenEgg.png" type="Texture" id=13]
 
 [sub_resource type="NavigationPolygon" id=1]
 vertices = PoolVector2Array( 936.939, 319.413, 948.278, 303.034, 1125.93, 304.294, 1132.23, 539.899, 953.318, 354.691, 121.77, 546.199, 112.951, 458.004, 443.05, 389.969, 705.114, 432.806, 802.128, 408.867 )
@@ -58,7 +59,12 @@ extents = Vector2( 32.651, 32.6374 )
 resource_local_to_scene = true
 extents = Vector2( 32.651, 32.6374 )
 
+[sub_resource type="RectangleShape2D" id=9]
+resource_local_to_scene = true
+extents = Vector2( 33.7213, 34.6663 )
+
 [node name="castle" instance=ExtResource( 2 )]
+canFastTravel = false
 
 [node name="background" parent="." index="0"]
 texture = ExtResource( 1 )
@@ -134,7 +140,7 @@ texture = ExtResource( 5 )
 position = Vector2( 703.483, 434.38 )
 image = ExtResource( 8 )
 itemType = "NPC"
-viewText = [ "You...you're not from here, are you?", "No, I'm not.", "I mean, you're not from this world, are you?", "No, actually. I was playing video games and suddenly woke up in a dungeon! Can you help me get home?", "I hope so.", "I was the one who summoned you here.", "...", "Our wise and noble king, King Graham, has been cursed. The greatest heros in the land could not break the curse, ", "and this spell is unlike anything I've ever encountered. ", "Using my powers, I performed a ritual to summon heroes from across the Planes. So far, you have been the first I've encountered.", "How can I possibly help the king?! I'm just a guy..", "A guy...", "You know.", "I'm not even from this world!", "Well, you've gotten this far, haven't you? ", "I have faith in you..", "uh..", "what was your name..", "Well, if the fate of the kingdom rests on my shoulders, so be it!", "How can I help the king?", "He was cursed by an evil druid, a nature witch, from the South. ", "Seek the hallowed grove and get a piece of the root from the Ancient Tree.", "To help you in this quest, I give you these gifts.", "First, a sickle. The wilds are full of greenery to cut through, and you will need this tool.", "Second, take this steel helmet. It will protect you on your mission.", "Godspeed adventurer! The fate of the kingdom lies with you!", "Cool." ]
+viewText = [ "You...you're not from here, are you?", "No, I'm not.", "I mean, you're not from this world, are you?", "No, actually. I was playing video games and suddenly woke up in a dungeon! Can you help me get home?", "I hope so.", "I was the one who summoned you here.", "...", "Our wise and noble king, King Graham, has been cursed. The greatest heros in the land could not break the curse, ", "and this spell is unlike anything I've ever encountered. ", "Using my powers, I performed a ritual to summon heroes from across the Planes. So far, you have been the first I've encountered.", "How can I possibly help the king?! I'm just a guy..", "A guy...", "You know.", "I'm not even from this world!", "Well, you've gotten this far, haven't you? ", "I have faith in you..", "uh..", "what was your name..", "Well, if the fate of the kingdom rests on my shoulders, so be it!", "How can I help the king?", "He was cursed by my brother, an evil necromancer.", "Seek the hallowed grove and get a piece of the root from the Ancient Tree.", "To help you in this quest, I give you these gifts.", "First, a sickle. The wilds are full of greenery to cut through, and you will need this tool.", "Second, take this steel helmet. It will protect you on your mission.", "Godspeed adventurer! The fate of the kingdom lies with you!", "Cool." ]
 npcFace = ExtResource( 9 )
 faceArray = [ 2, 1, 2, 1, 2, 2, 1, 2, 2, 2, 1, 1, 1, 1, 2, 2, 2, 2, 1, 1, 2, 2, 2, 2, 2, 2, 1 ]
 
@@ -204,14 +210,26 @@ position = Vector2( -153.71, -27.7183 )
 image = ExtResource( 12 )
 itemType = "pickup"
 
+[node name="goldenEgg" parent="." index="14" instance=ExtResource( 3 )]
+position = Vector2( 28.5726, 575.432 )
+image = ExtResource( 13 )
+itemType = "pickup"
+viewText = [ "It's a egg, made out of gold!", "Cool." ]
+
+[node name="CollisionShape2D" parent="goldenEgg/Area2D" index="0"]
+shape = SubResource( 9 )
+
+[node name="Sprite" parent="goldenEgg" index="2"]
+texture = ExtResource( 13 )
+
 [connection signal="activateSignal" from="regularKing" to="nes" method="pickup"]
-[connection signal="powerSignal" from="corruptKing" to="corruptKing" method="hideItem"]
 [connection signal="powerSignal" from="corruptKing" to="regularKing" method="showItem"]
+[connection signal="powerSignal" from="corruptKing" to="corruptKing" method="hideItem"]
 [connection signal="activateSignal" from="courtWizard" to="guardToCourtyard" method="unlockDoor"]
-[connection signal="activateSignal" from="courtWizard" to="courtWizard" method="hideItem"]
-[connection signal="activateSignal" from="courtWizard" to="courtWizard2" method="showItem"]
 [connection signal="activateSignal" from="courtWizard" to="sickle" method="pickup"]
 [connection signal="activateSignal" from="courtWizard" to="steelHelmet" method="pickup"]
+[connection signal="activateSignal" from="courtWizard" to="courtWizard" method="hideItem"]
+[connection signal="activateSignal" from="courtWizard" to="courtWizard2" method="showItem"]
 
 [editable path="guardToCourtyard"]
 [editable path="regularKing"]
@@ -220,3 +238,4 @@ itemType = "pickup"
 [editable path="courtWizard2"]
 [editable path="sickle"]
 [editable path="steelHelmet"]
+[editable path="goldenEgg"]

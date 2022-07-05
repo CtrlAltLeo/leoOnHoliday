@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/Juno In The Space Maze - Loopop.mp3-5083063b9ecd2bd13bb3bc595befbc15.mp3str"
+
+[deps]
+
+source_file="res://Sounds/Juno In The Space Maze - Loopop.mp3"
+dest_files=[ "res://.import/Juno In The Space Maze - Loopop.mp3-5083063b9ecd2bd13bb3bc595befbc15.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

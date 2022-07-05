@@ -1,10 +1,11 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://Scenes/mainScene.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Images/Rooms/cityInside.png" type="Texture" id=2]
 [ext_resource path="res://Scenes/item.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Images/Items/woodenSign.png" type="Texture" id=4]
 [ext_resource path="res://Scenes/fastTravel.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Sounds/In Memory of Jean Talon - Mini Vandals.mp3" type="AudioStream" id=6]
 
 [sub_resource type="NavigationPolygon" id=1]
 vertices = PoolVector2Array( 1123.24, 503.473, 1136.61, 547.127, 112.964, 544.454, 854.192, 496.346, 766.884, 466.946, 534.359, 485.655, 520.105, 426.856, 594.05, 420.62, 729.466, 426.856, 122.764, 486.546, 281.344, 456.255, 487.142, 485.655 )
@@ -28,6 +29,7 @@ resource_local_to_scene = true
 extents = Vector2( 107.085, 135.359 )
 
 [node name="city" instance=ExtResource( 1 )]
+sceneMusic = ExtResource( 6 )
 
 [node name="background" parent="." index="0"]
 texture = ExtResource( 2 )

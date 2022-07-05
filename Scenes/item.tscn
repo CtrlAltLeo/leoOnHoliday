@@ -6,7 +6,7 @@
 
 [sub_resource type="RectangleShape2D" id=1]
 resource_local_to_scene = true
-extents = Vector2( 33.7621, 32.7478 )
+extents = Vector2( 33.7213, 34.6663 )
 
 [sub_resource type="Animation" id=2]
 resource_name = "flicker"

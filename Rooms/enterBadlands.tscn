@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://Images/Rooms/badlands1.png" type="Texture" id=1]
 [ext_resource path="res://Scenes/mainScene.tscn" type="PackedScene" id=2]
@@ -7,7 +7,6 @@
 [ext_resource path="res://Images/Portraits/desertNomad1Face.png" type="Texture" id=5]
 [ext_resource path="res://Sounds/Yah Ribon - E's Jammy Jams.mp3" type="AudioStream" id=6]
 [ext_resource path="res://Images/Items/woodenSign.png" type="Texture" id=7]
-[ext_resource path="res://Images/Items/snakeCoin.png" type="Texture" id=8]
 [ext_resource path="res://Scenes/fastTravel.tscn" type="PackedScene" id=9]
 
 [sub_resource type="NavigationPolygon" id=1]
@@ -58,10 +57,6 @@ tracks/0/keys = {
 "update": 0,
 "values": [ 0.0, 3.0, 0.0 ]
 }
-
-[sub_resource type="RectangleShape2D" id=7]
-resource_local_to_scene = true
-extents = Vector2( 33.7621, 32.7478 )
 
 [node name="enterBadlands" instance=ExtResource( 2 )]
 sceneMusic = ExtResource( 6 )
@@ -171,21 +166,7 @@ position = Vector2( -80.0469, 102.875 )
 [node name="AnimationPlayer" parent="signBadlands3" index="5"]
 anims/flicker = SubResource( 6 )
 
-[node name="snakeCoin" parent="." index="10" instance=ExtResource( 3 )]
-position = Vector2( 218.472, 523.28 )
-rotation = -0.559435
-scale = Vector2( 0.664431, 0.664431 )
-image = ExtResource( 8 )
-itemType = "pickup"
-viewText = [ "You find a small coin with a snake on it.", "A shiver runs down your spine as you put it into your pocket." ]
-
-[node name="CollisionShape2D" parent="snakeCoin/Area2D" index="0"]
-shape = SubResource( 7 )
-
-[node name="Sprite" parent="snakeCoin" index="2"]
-texture = ExtResource( 8 )
-
-[node name="fastTravel" parent="." index="11" instance=ExtResource( 9 )]
+[node name="fastTravel" parent="." index="10" instance=ExtResource( 9 )]
 Name = "Badlands"
 location = "res://Rooms/enterBadlands.tscn"
 
@@ -194,4 +175,3 @@ location = "res://Rooms/enterBadlands.tscn"
 [editable path="signToCrossRoads"]
 [editable path="signToBadlands2"]
 [editable path="signBadlands3"]
-[editable path="snakeCoin"]

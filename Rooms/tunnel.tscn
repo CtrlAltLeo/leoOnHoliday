@@ -40,4 +40,9 @@ shape = SubResource( 2 )
 [node name="walkPos" parent="tunnelDoor" index="3"]
 position = Vector2( 526.153, 268.839 )
 
+[node name="mapExplain" parent="." index="6" instance=ExtResource( 3 )]
+position = Vector2( -172.859, 186.329 )
+itemType = "story"
+viewText = [ "\"You find a map on the ground.\"", "\"Click on the door icon in the top left to open the map, then choose a location to travel to.\"", "\"As you explore the world, you'll unlock new locations.\"" ]
+
 [editable path="tunnelDoor"]

@@ -64,7 +64,7 @@ position = Vector2( 99.8934, 61.8388 )
 position = Vector2( 845.423, 410.281 )
 image = ExtResource( 5 )
 itemType = "NPC"
-viewText = [ "Hey Aodan, you're looking kind of rough..", "Yeah? It's your fault you know, this is the only PNG you have of me.", "What?", "Just ask for a better photo for the game! ", "What the heck are you talking about?", "YOU KNOW EXACTLY WHAT I'M TALKING ABOUT!!", "Uhh...", "No B-", "Dude you can't say that in a Brimless game.", "YOU JUST ACKNOWLEDGED THAT WE'RE IN A", "Anyway, do you have any quests you need me to do or advice?", "Well, this guy gave me a Dungeon Key and asked me not to give it to you unless you give me a Steel Helmet.", "You need a Steel Helmet?", "Or a hubcap.", "But I need a hubcap!", "Just get me a Steel Helmet." ]
+viewText = [ "Hey Aodan, you're looking kind of rough..", "Yeah? It's your fault you know, this is the only PNG you have of me.", "What?", "Just ask for a better photo for the game! ", "What the heck are you talking about?", "YOU KNOW EXACTLY WHAT I'M TALKING ABOUT!!", "Uhh...", "No B-", "Dude you can't say that in a Brimless game.", "YOU JUST ACKNOWLEDGED THAT WE'RE IN A", "Anyway, do you have any quests you need me to do or advice?", "This cardboard box offers no protection! I need a Steel Helmet!", "You need a Steel Helmet?", "Or a hubcap.", "But I need a hubcap!", "Just get me a Steel Helmet." ]
 reactionText = {
 "beerStein": [ "Aodan doesn't want that.", "Come back with a better gift!" ],
 "mushroom": [ "It's your mushroom!", "You figure out how to get rid of it!" ],

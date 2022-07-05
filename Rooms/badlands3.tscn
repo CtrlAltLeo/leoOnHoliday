@@ -46,13 +46,14 @@ itemType = "NPC"
 viewText = [ "Hola, Amigo! I am the legendary Ssnake Joness!!", "What are you doing in my desert?", "I'm on a quest to return to my home world.", "Home world, eh? That soundss pretty cool!", "Oh my gravy, what do you have there, sir?", "\"sir?\"", "uh..", "This little plastic box is my new treasure! It fell from the sky a few hours ago.", "Does it have a sticker that says \"Leo\" on the back?", "Yes, why?", "I'm..Leo.", "Are you ssure?? There could be a million Leoss around here!", "I have a feeling I'm going to need that cart, please.", "Go cry about it!", "Smh.." ]
 reactionText = {
 "beerStein": [ "Snake Jones seems interested!", "In a cool skull he found on the ground.." ],
+"chocolateMilk": [ "Snake Jones is a massive Chocolate Milk fan.", "Semi-reluctanly, he decides to part with the plastic box in exchange for the milk.", "+1 Pacifist Points." ],
 "item": [ "You brutally murder Snake Jones.", "This will probably go against your permant record.", "Amongus" ],
 "powerGlove": [ "You snap your fingers..", "wait no, not that.", "You high five Snake Jones's Face, and take your prized game." ],
 "snakeCoin": [ "You think the coin might offend Snake Jones.", "You decide to don't." ],
 "woodenClub": [ "This wooden club is super powerful! ", "However..", "It's going to take even more firepower to defeat Snake Jones!" ],
 "woodenOar": [ "Row row row Snake Jones,", "Merrilly down the stream! Merrilly merrilly, merrrrilyyyy...", "Don't do that." ]
 }
-powerSignals = [ "powerGlove" ]
+powerSignals = [ "powerGlove", "chocolateMilk" ]
 npcFace = ExtResource( 3 )
 faceArray = [ 2, 2, 1, 2, 1, 2, 1, 2, 1, 2, 1, 2, 1, 2, 1 ]
 

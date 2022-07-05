@@ -85,6 +85,9 @@ shape = SubResource( 3 )
 [node name="Sprite" parent="witch" index="2"]
 texture = ExtResource( 4 )
 
+[node name="walkPos" parent="witch" index="3"]
+position = Vector2( -162.512, 108.477 )
+
 [node name="witch2" parent="." index="7" instance=ExtResource( 3 )]
 visible = false
 position = Vector2( 712.734, 467.309 )
@@ -116,8 +119,8 @@ shape = SubResource( 5 )
 [node name="Sprite" parent="ruby" index="2"]
 texture = ExtResource( 7 )
 
-[connection signal="activateSignal" from="witch" to="ruby" method="pickup"]
 [connection signal="activateSignal" from="witch" to="witch2" method="showItem"]
+[connection signal="activateSignal" from="witch" to="ruby" method="pickup"]
 
 [editable path="signToWRoad1"]
 [editable path="witch"]

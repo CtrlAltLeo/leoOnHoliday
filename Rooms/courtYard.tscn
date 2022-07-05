@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://Images/Rooms/castleExterior.png" type="Texture" id=1]
 [ext_resource path="res://Images/People/guard.png" type="Texture" id=2]
@@ -6,6 +6,7 @@
 [ext_resource path="res://Scenes/item.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Scenes/mainScene.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Scenes/fastTravel.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Sounds/In Memory of Jean Talon - Mini Vandals.mp3" type="AudioStream" id=7]
 
 [sub_resource type="NavigationPolygon" id=1]
 vertices = PoolVector2Array( 704.6, 458.501, 928.6, 452.501, 1080.6, 505.501, 1132.6, 539.501, 125.6, 543.501, 523.6, 468.501, 116.6, 453.501 )
@@ -21,6 +22,7 @@ resource_local_to_scene = true
 extents = Vector2( 55.5554, 129.645 )
 
 [node name="courtYard" instance=ExtResource( 5 )]
+sceneMusic = ExtResource( 7 )
 
 [node name="background" parent="." index="0"]
 texture = ExtResource( 1 )

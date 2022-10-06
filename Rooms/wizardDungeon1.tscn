@@ -111,17 +111,17 @@ shape = SubResource( 4 )
 [node name="walkPos" parent="bigSkull" index="3"]
 position = Vector2( 717.814, 426.221 )
 
+[connection signal="activateSignal" from="tablet" to="rose" method="showItem"]
 [connection signal="activateSignal" from="tablet" to="treasure" method="showItem"]
 [connection signal="activateSignal" from="tablet" to="skull" method="showItem"]
-[connection signal="activateSignal" from="tablet" to="rose" method="showItem"]
+[connection signal="onPickup" from="treasure" to="rose" method="hideItem"]
 [connection signal="onPickup" from="treasure" to="door" method="unlockDoor"]
 [connection signal="onPickup" from="treasure" to="skull" method="hideItem"]
-[connection signal="onPickup" from="treasure" to="rose" method="hideItem"]
-[connection signal="onPickup" from="skull" to="door" method="unlockDoor"]
-[connection signal="onPickup" from="skull" to="treasure" method="hideItem"]
 [connection signal="onPickup" from="skull" to="rose" method="hideItem"]
-[connection signal="onPickup" from="rose" to="door" method="unlockDoor"]
+[connection signal="onPickup" from="skull" to="treasure" method="hideItem"]
+[connection signal="onPickup" from="skull" to="door" method="unlockDoor"]
 [connection signal="onPickup" from="rose" to="treasure" method="hideItem"]
+[connection signal="onPickup" from="rose" to="door" method="unlockDoor"]
 [connection signal="onPickup" from="rose" to="skull" method="hideItem"]
 
 [editable path="tablet"]
